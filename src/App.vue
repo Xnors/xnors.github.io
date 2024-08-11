@@ -4,7 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div>
-    <h1>Welcome to web-of-XNORS</h1>
+    <h1>XNORS Studio</h1>
   </div>
   <div>
     <a href="https://vitejs.dev" target="_blank">
