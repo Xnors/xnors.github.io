@@ -46,7 +46,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:  
           branch: gh-pages  # default: gh-pages
-          folder: build
+          folder: dist  # 打包后的文件存放的目录，默认是 dist
 
 
 
