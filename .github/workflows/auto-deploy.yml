@@ -50,7 +50,7 @@ jobs:
       - name: 打包 🔧
         run: npm run build
 
-      - name: Output secret (DANGER: Do not use in production)
+      - name: o
         run: echo "=============================================================================== The secret is: $MY_SECRET"
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
