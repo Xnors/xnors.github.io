@@ -50,6 +50,11 @@ jobs:
       - name: 打包 🔧
         run: npm run build
 
+      - name: Output secret (DANGER: Do not use in production)
+        run: echo "=============================================================================== The secret is: $MY_SECRET"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+
       # 部署 https://github.com/JamesIves/github-pages-deploy-action
       - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4
