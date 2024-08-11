@@ -37,30 +37,25 @@ jobs:
         uses: actions/checkout@v3
 
       # 建一个名为setup-node的步骤（安装指定版本的Node.js）
-      - name: setup-node 
+      - name: 安装Node.js
         # 使用setup-node@v3这个action
         uses: actions/setup-node@v3
         # 指定某个action 可能需要输入的参数
         with:
-          node-version: '16.x'
-
-      # 安装 pnpm
-      - name: Install pnpm
-        run: npm install pnpm -g
-
+          node-version: '18.x'
       # 安装依赖  
-      - name: Install dependencies
-        run: pnpm i
+      - name: 安装依赖 
+        run: npm install
       # 打包
-      - name: Build application 🔧
-        run: pnpm run build:prod
+      - name: 打包 🔧
+        run: npm run build
 
       # 部署 https://github.com/JamesIves/github-pages-deploy-action
-      - name: Deploy 🚀
+      - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         if: github.ref == 'refs/heads/main'
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        with:  
+          token: ${{ secrets.GH_TOKEN }}
           branch: gh-pages  # default: gh-pages
           folder: dist
           clean: true # Automatically remove deleted files from the deploy branch
