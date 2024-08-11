@@ -27,22 +27,13 @@ jobs:
     # runs-on: macos-latest
     # runs-on: windows-latest
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     
     # 步骤
     steps:
       # 官方action，将代码拉取到虚拟机
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 建一个名为setup-node的步骤（安装指定版本的Node.js）
-      - name: 安装Node.js
-        # 使用setup-node@v3这个action
-        uses: actions/setup-node@v3
-        # 指定某个action 可能需要输入的参数
-        with:
-          node-version: '18.x'
       # 安装依赖  
       - name: 安装依赖 
         run: npm install
@@ -50,21 +41,12 @@ jobs:
       - name: 打包 🔧
         run: npm run build
 
-      - name: o
-        run: echo "=============================================================================== The secret is: $MY_SECRET"
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-
       # 部署 https://github.com/JamesIves/github-pages-deploy-action
       - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4
-        if: github.ref == 'refs/heads/main'
         with:  
-          token: ${{ secrets.XT }}
           branch: gh-pages  # default: gh-pages
-          folder: dist
-          clean: true # Automatically remove deleted files from the deploy branch
-          # commit-message: ${{ github.event.head_commit.message }} # default: `Deploying to gh-pages from @ 3238feb 🚀`
-          # commit-message: "deploy: ${{ github.sha }} (${{ github.event.head_commit.message }}) 🚀 "
+          folder: build
+
 
 
