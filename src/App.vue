@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+function onGithubBtnClick() {
+  console.log("点击了github按钮");
+}
+function onProjectBtnClick() {
+  console.log("点击了项目按钮");
+}
+</script>
 
 <template>
   <!-- SVG内容 -->
@@ -6,21 +13,30 @@
   <img src="./assets/svgs/line.svg" class="分割线" alt="" />
   <div class="set-center">
     <img class="logo" src="./assets/svgs/CENTER-logo-name-motto.svg" />
-    <div class="btn-group">
-      <button class="btn-left">Github</button>
-      <button class="btn-right">!!!</button>
+    <div class="aboutus">
+      <a href="/About.vue">Know More<br />↓</a>
+      <!-- BUG!!! 这里要用路由 -->
     </div>
   </div>
+
 </template>
 
-<style type="text/sass">
+<style type="text/css">
 @font-face {
   font-family: "deyihei";
-  src:
-  url("./assets/SmileySans-Oblique.ttf") format("truetype"); /* 指定多种字体格式以兼容不同浏览器*/
+  src: url("./assets/SmileySans-Oblique.ttf") format("truetype"); /* 指定多种字体格式以兼容不同浏览器*/
 
   font-weight: normal;
   font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff8f;
+  font-family: "deyihei";
+
+  letter-spacing: 3px;
+  font-size: auto;
 }
 
 body {
@@ -31,57 +47,23 @@ body {
     rgba(18, 0, 28, 1)
   );
 }
-.btn-group {
-  display: flex;
-  justify-content: center;
-  margin-top: 2%;
-  width: 400px; /* 元素宽度 */
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.btn-left {
-  /* 设置字体为 assets/deyihei.ttf */
-  font-family: "deyihei";
-  color: #000000;
-  letter-spacing: 2px;
+.aboutus {
+  text-align: center;
+  margin-top: auto;
 
-  background-image: linear-gradient(315deg, #886dffb4, #4aaeffa1);
-  box-shadow: 0px 0px 10px #886dffb4;
-  margin-right: 5vw;
-  background-size: 100%;
-  height: 30px;
-  width: 100px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn-right {
-  /* 设置字体为 assets/deyihei.ttf */
-  font-family: "deyihei";
-  color: #ffffff;
-  letter-spacing: 2px;
-
-  background-image: linear-gradient(35deg, #7147b4, #341369, #0f3c61,#4dafff);
-  box-shadow: 0px 0px 10px #ffffffb4;
-  margin-left: 5vw;
-  background-size: 100%;
-  height: 30px;
-  width: 100px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-
-  width: auto;
   height: auto;
-  max-height: 20%;
-  max-width: 20%;
+  width: auto;
+  max-width: 99%;
+  max-height: 16vh;
+
+  position: absolute;
+  bottom: 4%;
+  margin: auto;
 }
+
 .logo {
-  margin-top: -5%;
+  margin-top: -2%;
   height: auto;
   width: auto;
   max-width: 42%;
