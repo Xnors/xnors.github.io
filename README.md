@@ -1,5 +1,7 @@
-# Vue 3 + Vite
+# Xnors工作室官网
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这个项目是Xnors工作室的官网。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+该项目版权归Xnors所有。侵权必究。
+
+我们的官网：<https://xnors.github.io/>
