@@ -1,0 +1,39 @@
+@keyframes fideIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.intro {
+  font-family: "deyihei";
+
+  font-size: 200%;
+  text-align: left;
+  opacity: 1;
+
+  color: white;
+  animation: fideIn 1s ease-in-out;
+  .intro-text {
+    font-size: 80%;
+    text-align: center;
+    animation: fideIn 1s ease-in-out;
+  }
+}
+
+.home-container {
+  height: 100vh;
+  display: flex;
+  color: azure;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
