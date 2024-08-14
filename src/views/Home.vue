@@ -22,6 +22,11 @@ export default {
       } /* else {
         this.nav_show = false;
       } */
+
+      // 当滚动到顶部时，元素不显示
+      if (scrollTop <= 0) {
+        this.nav_show = false;
+      }
     },
   },
   components: {
@@ -51,12 +56,11 @@ export default {
     <img
       class="logo"
       src="../assets/svgs/CENTER-logo-name-motto.svg"
-      style="width: 100%; height: 100%"
       alt=""
     />
 
     <div class="aboutus">
-      <p href="/about">Know More<br />↓</p>
+      <p href="/about">↓</p>
     </div>
     <!--     <a href="https://github.com/xnors/" class="github-link">
       <img src="../assets/gh-icon-and-text.svg" alt="" />
