@@ -8,9 +8,6 @@
     </p>
   </div>
 
-  
-
-
   <div class="right">
     <h1>我们的特点</h1>
 
@@ -23,7 +20,7 @@
     <p>
       专业性是我们的承诺。我们的团队成员拥有丰富的行业经验和技术专长，为客户提供专业、可靠的服务。我们致力于成为您值得信赖的IT合作伙伴。<!-- <br /> -->
     </p>
-<!--     <h3>性价比</h3>
+    <!--     <h3>性价比</h3>
     <p>
       我们追求性价比的最大化。通过精准的需求分析和高效的项目管理，我们确保用最少的投入为您带来最大的商业价值。
     </p> -->
@@ -33,15 +30,26 @@
     <h1>联系方式</h1>
     <p>
       无论您是想探讨项目合作，还是对技术有疑问，我们都非常乐意与您交流。请通过以下方式与我们取得联系：<!-- <br /> -->
-      <li>邮箱：xnors-studio@outlook.com</li>
+      <li>QQ: 731499435</li>
+      <li>
+        邮箱：<a href="mailto:xnors-studio@outlook.com"
+          >xnors-studio@outlook.com</a
+        >
+      </li>
       <li>
         Github：<a href="https://github.com/xnors">https://github.com/xnors</a>
+      </li>
+      <li>
+        反馈:
+        <a
+          href="mailto:xnors-studio@outlook.com?subject=反馈&body=请写下您的反馈内容"
+          >发送反馈</a
+        >
       </li>
     </p>
   </div>
   <br />
   <br />
-
 </template>
 
 <script>
