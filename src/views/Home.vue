@@ -1,5 +1,6 @@
 <script>
 import About from "./About.vue";
+import AboutNext from "./AboutNext.vue";
 
 export default {
   name: "Home",
@@ -14,17 +15,18 @@ export default {
       // 获取页面高度
       this.pageHeight = document.documentElement.scrollHeight;
       // 页面滑动的距离
-      let scrollTop = document.documentElement.scrollTop + 60;
+      let scrollTop = document.documentElement.scrollTop;
       // 当页面滑动的距离大于页面高度时元素显示，否则不显示
       if (scrollTop >= this.pageHeight - window.innerHeight) {
         this.nav_show = true;
-      } else {
+      } /* else {
         this.nav_show = false;
-      }
+      } */
     },
   },
   components: {
     About,
+    AboutNext,
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -66,6 +68,7 @@ export default {
     <div class="intro" v-if="nav_show">
       <About />
     </div>
+<!--     <AboutNext /> -->
   </div>
 </template>
 

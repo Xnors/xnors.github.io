@@ -1,0 +1,56 @@
+@keyframes fideIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.intro {
+  margin-top: 10vh;
+  font-family: "deyihei";
+
+  font-size: 100%;
+  text-align: left;
+  opacity: 1;
+
+  color: rgba(255, 255, 255, 0.66);
+  animation: fideIn 1s ease-in-out;
+  .left{
+    text-align: left;
+  }
+  .right{
+    text-align: right;
+  }
+  h1{
+    font-size: calc(3vw + 1.5vh);
+  }
+  p{
+    font-size: calc(1.2vw + 1.2vh);
+  }
+  li{
+
+    font-size: calc(1.2vw + 1.2vh);
+  }
+  h3{
+    font-size: calc(2.2vw + 1.1vh);
+  }
+
+}
+
+
+.home-container {
+  height: 100vh;
+  display: flex;
+  color: azure;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
