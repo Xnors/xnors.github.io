@@ -1,6 +1,6 @@
-$about-width: 45vw;
-$about-margin: 3vw;
-$about-border: 1px solid #ffffffd7;
+$about-width: 50vw;
+$about-margin: 2.5vw;
+$about-border: none;
 
 @keyframes fideIn {
   0% {
@@ -16,6 +16,22 @@ $about-border: 1px solid #ffffffd7;
   }
 }
 
+
+@keyframes fideInWidth100 {
+  0% {
+    opacity: 0;
+    width: $about-width;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    width: 100vw;
+  }
+}
+
+
 .intro {
   width: 100vw;
 
@@ -28,20 +44,21 @@ $about-border: 1px solid #ffffffd7;
   text-align: center;
   opacity: 1;
 
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(255, 255, 255, 0.6);
 
   .left {
     margin: $about-margin;
     width: $about-width;
     height: auto;
+    margin-left: -0.1vw;
 
     text-align: left;
     display: block;
-    animation: fideIn 1s ease-in-out;
+    animation: fideIn 0.8s ease-in-out;
 
-    /*     border: $about-border;
- */
-    margin-right: auto;
+    border: $about-border;
+
+    padding: 2%;
   }
 
   .right {
@@ -52,11 +69,13 @@ $about-border: 1px solid #ffffffd7;
     height: auto;
 
     text-align: right;
-    animation: fideIn 2s ease-in-out;
+    animation: fideIn 1.3s ease-in-out;
 
-    /*     border: $about-border;
- */
+    border: $about-border;
+
     margin-left: auto;
+
+
   }
 
   .left2 {
@@ -65,9 +84,20 @@ $about-border: 1px solid #ffffffd7;
     width: $about-width;
     text-align: left;
 
-    animation: fideIn 3s ease-in-out;
-    /* 
-    border: $about-border; */
+    animation: fideIn 1.8s ease-in-out;
+    
+    border: $about-border;
+    margin: $about-margin;
+  }
+
+  .contact{
+    position: relative;
+
+    text-align: left;
+
+    animation: fideInWidth100 1.8s ease-in-out;
+    
+    border: $about-border;
     margin: $about-margin;
   }
 

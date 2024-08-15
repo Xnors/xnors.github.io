@@ -1,6 +1,6 @@
 <script>
 import About from "./About.vue";
-import AboutNext from "./AboutNext.vue";
+import AboutNext from "./Projects.vue";
 
 export default {
   name: "Home",
@@ -60,7 +60,7 @@ export default {
     />
 
     <div class="aboutus">
-      <p href="/about">↓</p>
+      <p href="/about">下滑试试<br>↓</p>
     </div>
     <!--     <a href="https://github.com/xnors/" class="github-link">
       <img src="../assets/gh-icon-and-text.svg" alt="" />

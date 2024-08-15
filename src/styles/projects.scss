@@ -1,0 +1,73 @@
+@keyframes fadeInByScroll {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.pj-title {
+  display: flex;
+
+  flex-direction: row; /*设置主轴方向是水平方向*/
+  align-items: center; /*设置侧轴上，子元素的排列方式为居中对齐*/
+  justify-content: center; /*设置主轴上，子元素的排列方式为居中对齐*/
+  h1 {
+    border: 1vh solid #ffffff41;
+    padding: 10vw;
+    border-radius: 6%;
+
+    background-image: linear-gradient(351deg, #7ea1b916, #7c77ac16);
+
+    font-size: 10vh;
+    text-align: center;
+    margin-top: 10vh;
+  }
+}
+
+.project-style {
+  animation: fadeInByScroll ease-in-out;
+  animation-timeline: view();
+  animation-range: entry 0;
+  height: 100vh;
+}
+
+.projects-root {
+  margin-top: 18vh;
+}
+
+.pj-crain {
+  display: flex;
+  flex-direction: row-reverse;
+
+  flex-direction: row; /*设置主轴方向是水平方向*/
+  align-items: center; /*设置侧轴上，子元素的排列方式为居中对齐*/
+  justify-content: center; /*设置主轴上，子元素的排列方式为居中对齐*/
+
+  width: 99vw;
+  h1 {
+    width: auto;
+    height: auto;
+
+    margin: 2vw;
+    margin-left: -10vw;
+
+    font-size: 5vw;
+    color: #ffffff2c;
+  }
+  .pj-crain-logo {
+    width: 15vw;
+    height: 15vw;
+    border: 1px solid #ffffff41;
+    background-image: linear-gradient(135deg, #7ea1b916, #7c77ac16);
+  }
+  .info {
+    text-align: left;
+    width: 50vw;
+    padding: 1vw;
+    font-size: large;
+  }
+}
