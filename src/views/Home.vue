@@ -45,22 +45,24 @@ export default {
 
 <template>
   <!-- SVG内容 -->
-  <img
-    src="../assets/svgs/LT-logo-name.svg"
-    class="左上logo"
-    alt=""
-    style="height: 80%; width: 80%"
-  />
+  <img src="../assets/svgs/LT-logo-name.svg" class="左上logo" alt="" style="height: 80%; width: 80%" />
   <img src="../assets/svgs/line.svg" class="分割线" alt="" />
   <div class="set-center">
-    <img
-      class="logo"
-      src="../assets/svgs/CENTER-logo-name-motto.svg"
-      alt=""
-    />
+    <img class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
+
+    <div class="btns">
+      <a href="https://github.com/orgs/Xnors/repositories">
+        <img src="../assets/svgs/btns/分组 2.svg" class="btn-left">
+      </a>
+
+      <a href="https://xnors.github.io/docs/">
+        <img src="../assets/svgs/btns/分组 3.svg" class="btn-right">
+      </a>
+
+    </div>
 
     <div class="aboutus">
-      <p href="/about">下滑试试<br>↓</p>
+      <p href="/about">↓</p>
     </div>
     <!--     <a href="https://github.com/xnors/" class="github-link">
       <img src="../assets/gh-icon-and-text.svg" alt="" />
@@ -72,7 +74,7 @@ export default {
     <div class="intro" v-if="nav_show">
       <About />
     </div>
-<!--     <AboutNext /> -->
+    <!--     <AboutNext /> -->
   </div>
 </template>
 

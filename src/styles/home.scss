@@ -29,6 +29,16 @@
     transform: scale(0.99);
   }
 }
+@keyframes FadeInSizeBig {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  42% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 a {
   text-decoration: none;
@@ -101,4 +111,36 @@ p {
   height: auto;
   max-height: 4.8px;
   opacity: 0.4;
+}
+
+$btn-max-width: 30vw;
+$btn-max-height: 30vh;
+
+.btns {
+  display: flex;
+  margin-top: 25vh;
+  .btn-left {
+    margin-right: 8vw;
+
+    animation: FadeInSizeBig ease-in-out;
+    animation-timeline: view();
+    // animation-range: entry 0;
+
+    height: auto;
+    width: auto;
+    max-width: $btn-max-width;
+    max-height: $btn-max-height;
+  }
+  .btn-right {
+    margin-left: 8vw;
+
+    animation: FadeInSizeBig ease-in-out;
+    animation-timeline: view();
+    // animation-range: entry 0;
+
+    height: auto;
+    width: auto;
+    max-width: $btn-max-width;
+    max-height: $btn-max-height;
+  }
 }
