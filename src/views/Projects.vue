@@ -3,26 +3,30 @@
     <h1>我们的项目</h1>
   </div>
 
+  <div class="project-style" ><!-- class="project-style" -->
+    <ProjectComponent :project="CRAIN_PJ_DATA" />
 
-  <div class="pj-crain project-style">
-    <h1>C<br />R<br />A<br />I<br />N</h1>
-    <br />
-    <div class="pj-crain-logo">
-      <p>假设这是crain的logo</p>
-    </div>
-    <div class="info">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex esse quam, praesentium nemo dicta tenetur
-      exercitationem hic? Nostrum, dicta. Sequi, veritatis a! Repellendus, blanditiis. Quibusdam doloribus tenetur sint
-      in eos!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex esse quam, praesentium nemo dicta tenetur
-      exercitationem hic? Nostrum, dicta. Sequi, veritatis a! Repellendus, blanditiis. Quibusdam doloribus tenetur sint
-      in eos!
-    </div>
   </div>
+
 </template>
 
 <script>
+import ProjectComponent from './ProjectComponent.vue';
+
 export default {
   name: "AboutNext",
+  components: {
+    ProjectComponent
+  },
+  data() {
+    return {
+      CRAIN_PJ_DATA: {
+        name: "CRAIN",
+        desc: "这是一个软件,是的,一个软件!!! 而且这是一个名叫 CRAIN 的软件,是的一个名叫 CRAIN 的软件!更振奋人心的是,它还是一个可以运行软件!是的,可以运行的软件!!!简直不可思议!!!",
+        img: "Crain",
+      }
+    }
+  }
 };
 </script>
 
