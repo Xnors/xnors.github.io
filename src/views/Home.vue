@@ -15,7 +15,7 @@ export default {
       // 获取页面高度
       this.pageHeight = document.documentElement.scrollHeight;
       // 页面滑动的距离
-      let scrollTop = document.documentElement.scrollTop;
+      let scrollTop = document.documentElement.scrollTop + 76;
       // 当页面滑动的距离大于页面高度时元素显示，否则不显示
       if (scrollTop >= this.pageHeight - window.innerHeight) {
         this.nav_show = true;
