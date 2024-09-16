@@ -18,17 +18,6 @@
   }
 }
 
-@keyframes sizeBreathe {
-  0% {
-    transform: scale(0.99);
-  }
-  50% {
-    transform: scale(1.01);
-  }
-  100% {
-    transform: scale(0.99);
-  }
-}
 @keyframes FadeInSizeBig {
   0% {
     transform: scale(0);
@@ -38,6 +27,10 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.data {
+  margin-top: 12%;
 }
 
 a {
@@ -77,8 +70,6 @@ p {
   width: auto;
   max-width: 70%;
   max-height: 70%;
-
-  animation: sizeBreathe 12s infinite;
 }
 
 .github-link {
@@ -113,14 +104,15 @@ p {
   opacity: 0.4;
 }
 
-$btn-max-width: 30vw;
-$btn-max-height: 30vh;
+$btn-max-width: 14vw;
+$btn-max-height: 14vh;
+$btn-margin: 14vw;
 
 .btns {
   display: flex;
   margin-top: 10%;
   .btn-left {
-    margin-right: 8vw;
+    margin-right: $btn-margin;
 
     animation: FadeInSizeBig ease-in-out;
     animation-timeline: view();
@@ -132,7 +124,7 @@ $btn-max-height: 30vh;
     max-height: $btn-max-height;
   }
   .btn-right {
-    margin-left: 8vw;
+    margin-left: $btn-margin;
 
     animation: FadeInSizeBig ease-in-out;
     animation-timeline: view();

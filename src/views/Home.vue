@@ -1,6 +1,7 @@
 <script>
 import About from "./About.vue";
 import AboutNext from "./Projects.vue";
+import Data from "./Data.vue";
 
 export default {
   name: "Home",
@@ -32,6 +33,7 @@ export default {
   components: {
     About,
     AboutNext,
+    Data,
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -58,8 +60,14 @@ export default {
       <a href="https://xnors.github.io/docs/">
         <img src="../assets/svgs/btns/分组 3.svg" class="btn-right">
       </a>
-
     </div>
+  </div>
+
+  <div class="data">
+    <Data></Data>
+  </div>
+
+  <div class="set-center">
 
     <div class="aboutus">
       <p href="/about">↓</p>
@@ -80,5 +88,5 @@ export default {
 
 <style type="text/scss" scoped>
 @import url("../styles/home.scss");
-@import url("../styles/bootstrap.css");
+/* @import url("../styles/bootstrap.css"); */
 </style>
