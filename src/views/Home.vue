@@ -29,6 +29,32 @@ export default {
         this.nav_show = false;
       }
     },
+    async addPorjectVisitCount() {
+      try {
+        // POST 请求
+        const response = await fetch('http://xnors.pythonanywhere.com/web_data_add1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            what: 'projects_visit_count'
+          })
+        });
+
+        // 检查响应是否正常
+        if (!response.ok) {
+          throw new Error('网络响应不正常，状态码:' + response.status);
+        }
+
+        const data = await response.json();
+
+        console.log('增加访问量成功:', data);
+      } catch (error) {
+        console.error('增加访问量失败:', error);
+        // 这里可以进行一些用户提示或其他处理
+      }
+    }
   },
   components: {
     About,
@@ -53,12 +79,12 @@ export default {
     <img class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
 
     <div class="btns">
-      <a href="https://github.com/orgs/Xnors/repositories">
+      <a href="https://github.com/orgs/Xnors/repositories" @click="addPorjectVisitCount()">
         <img src="../assets/svgs/btns/分组 2.svg" class="btn-left">
       </a>
 
-      <a href="https://xnors.github.io/docs/">
-        <img src="../assets/svgs/btns/分组 3.svg" class="btn-right">
+      <a href="https://xnors.github.io/docs/" @click="addPorjectVisitCount()">
+        <img src=" ../assets/svgs/btns/分组 3.svg" class="btn-right">
       </a>
     </div>
   </div>

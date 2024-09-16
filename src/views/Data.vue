@@ -84,6 +84,6 @@ h1,
 li {
     font-family: 'deyihei';
     letter-spacing: 2px;
-    color: white;
+    color: rgba($color: #ffffff, $alpha: 0.8);
 }
 </style>
