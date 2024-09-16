@@ -28,7 +28,7 @@ export default {
     methods: {
         async getWebData() {
             try {
-                const response = await fetch('http://127.0.0.1:5000/get_web_data'); //https://xnors.pythonanywhere.com/get_web_data
+                const response = await fetch('http://xnors.pythonanywhere.com/get_web_data'); //https://xnors.pythonanywhere.com/get_web_data
 
                 // 检查响应是否正常
                 if (!response.ok) {
@@ -52,7 +52,7 @@ export default {
         async addVisitCount() {
             try {
                 // POST 请求
-                const response = await fetch('http://127.0.0.1:5000/web_data_add1', {
+                const response = await fetch('http://xnors.pythonanywhere.com/web_data_add1', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
