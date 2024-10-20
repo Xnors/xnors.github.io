@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "deyihei";
+  src: url("./assets/SmileySans-Oblique.ttf") format("truetype");
+  /* 指定多种字体格式以兼容不同浏览器*/
+
+  font-weight: normal;
+  font-style: normal;
+}

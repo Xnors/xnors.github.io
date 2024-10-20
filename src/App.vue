@@ -1,19 +1,21 @@
-<script>
+<script setup>
 import Home from './views/Home.vue'
-export default {
-  components: {
-    Home,
-  },
-}
 </script>
 
 <template>
+
+  <div class="home">
+    <Home />
+  </div>
+  <!-- <div class="home2">
+    <Home />
+  </div>
   <div class="home">
     <Home />
   </div>
   <div class="home2">
     <Home />
-  </div>
+  </div> -->
 </template>
 
 <style lang="scss">
@@ -23,16 +25,16 @@ export default {
 }
 
 .home {
-  height: 100vh;
-  width: 100vw;
-
+  min-height: 120vh;
+  min-width: 100vw;
   background-color: #000;
+  // scroll-snap-align: start; // 子元素滚动吸附到开始位置
 }
 
 .home2 {
-  height: 100vh;
-  width: 100vw;
-
+  min-height: 120vh;
+  min-width: 100vw;
   background-color: #ffffff;
+  // scroll-snap-align: start; // 子元素滚动吸附到开始位置
 }
 </style>
