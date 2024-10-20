@@ -32,16 +32,16 @@ onMounted(() => {
         }, '-=500')
         .add({
             targets: '.logo',
-            translateY: [0, "-10vh"],
-            duration: 600,
+            translateY: [0, "-4vh"],
+            duration: 1000,
             easing: 'easeOutExpo'
         }, '-=200')
         .add({
             targets: '.links',
             opacity: [0, 1],
-            translateY: [window.innerHeight / 2, "-10vh"],
+            translateY: [window.innerHeight / 2, "-4vh"],
             duration: 1000,
-        })
+        }, '-=800')
 })
 
 // anime({
