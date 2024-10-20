@@ -1,118 +1,168 @@
-<script>
-import About from "./About.vue";
-import AboutNext from "./Projects.vue";
-import Data from "./Data.vue";
+<script setup>
+import anime from 'animejs/lib/anime.es.js';
+import { onMounted } from 'vue';
 
-export default {
-  name: "Home",
-  data() {
-    return {
-      nav_show: false,
-    };
-  },
 
-  methods: {
-    handleScroll() {
-      // 获取页面高度
-      this.pageHeight = document.documentElement.scrollHeight;
-      // 页面滑动的距离
-      let scrollTop = document.documentElement.scrollTop + 76;
-      // 当页面滑动的距离大于页面高度时元素显示，否则不显示
-      if (scrollTop >= this.pageHeight - window.innerHeight) {
-        this.nav_show = true;
-      } /* else {
-        this.nav_show = false;
-      } */
+onMounted(() => {
+    anime({
+        targets: '.links',
+        translateY: 500,
+        opacity: 0,
+        duration: 0,
+    })
+    // 获取元素
+    var myTimeline = anime.timeline({
+        // easing: 'easeOutExpo',
+        duration: 0
+    });
 
-      // 当滚动到顶部时，元素不显示
-      if (scrollTop <= 0) {
-        this.nav_show = false;
-      }
-    },
-    async addPorjectVisitCount() {
-      try {
-        // POST 请求
-        const response = await fetch('http://xnors.pythonanywhere.com/web_data_add1', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            what: 'projects_visit_count'
-          })
-        });
+    myTimeline
+        .add({
+            targets: '.name',
+            opacity: [0, 1],
+            translateY: [-window.innerHeight / 2, 0],
+            duration: 1000,
+            // easing: 'linear'
+        })
+        .add({
+            targets: '.logo',
+            opacity: [0, 1],
+            translateX: [-window.innerWidth / 2, 0],
+            duration: 1000,
+        }, '-=500')
+        .add({
+            targets: '.logo',
+            translateY: [0, "-4vh"],
+            duration: 1000,
+            easing: 'easeOutExpo'
+        }, '-=200')
+        .add({
+            targets: '.links',
+            opacity: [0, 1],
+            translateY: [window.innerHeight / 2, "-4vh"],
+            duration: 1000,
+        }, '-=800')
+})
 
-        // 检查响应是否正常
-        if (!response.ok) {
-          throw new Error('网络响应不正常，状态码:' + response.status);
-        }
+// anime({
+//   targets: '.logo',
+//   strokeDashoffset: [anime.setDashoffset, 0],
+//   easing: 'easeInOutSine',
+//   duration: 2000,
+//   direction: 'alternate'
+// });
 
-        const data = await response.json();
 
-        console.log('增加访问量成功:', data);
-      } catch (error) {
-        console.error('增加访问量失败:', error);
-        // 这里可以进行一些用户提示或其他处理
-      }
-    }
-  },
-  components: {
-    About,
-    AboutNext,
-    Data,
-  },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  // 组件销毁前
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-};
+
 </script>
 
 <template>
-  <!-- SVG内容 -->
-  <img src="../assets/svgs/LT-logo-name.svg" class="左上logo" alt="" style="height: 80%; width: 80%" />
-  <img src="../assets/svgs/line.svg" class="分割线" alt="" />
-  <div class="set-center">
-    <img class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
+    <div class="set-center">
+        <div class="name">
+            <p>Xnors</p>
+        </div>
+        <img id="logox" class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
+        <div class="links">
+            <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
+            <img src="../assets/QQicon.jpg" alt="" class="QQ-icon"> -->
+            <a href="https://github.com/orgs/Xnors/repositories" class="link-item" id="1">项目</a>
+            <div class="splite-line"></div>
 
-    <div class="btns">
-      <a href="https://github.com/orgs/Xnors/repositories" @click="addPorjectVisitCount()">
-        <img src="../assets/svgs/btns/分组 2.svg" class="btn-left">
-      </a>
+            <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
+            <div class="splite-line"></div>
 
-      <a href="https://xnors.github.io/docs/" @click="addPorjectVisitCount()">
-        <img src=" ../assets/svgs/btns/分组 3.svg" class="btn-right">
-      </a>
+            <div class="link-item email-link" onclick="alert('邮箱: xnors-studio@outlook.com');" id="3">邮箱</div>
+            <div class="splite-line"></div>
+
+            <a class="link-item" onclick="alert('QQ群: 731499435');" id="4">QQ群</a>
+        </div>
     </div>
-  </div>
-
-  <div class="data">
-    <Data></Data>
-  </div>
-
-  <div class="set-center">
-
-    <div class="aboutus">
-      <p href="/about">↓</p>
-    </div>
-    <!--     <a href="https://github.com/xnors/" class="github-link">
-      <img src="../assets/gh-icon-and-text.svg" alt="" />
-    </a> -->
-  </div>
-  <br />
-
-  <div class="home-container">
-    <div class="intro" v-if="nav_show">
-      <About />
-    </div>
-    <!--     <AboutNext /> -->
-  </div>
 </template>
 
-<style type="text/scss" scoped>
-@import url("../styles/home.scss");
-/* @import url("../styles/bootstrap.css"); */
+<style lang="scss" scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.links {
+    margin-top: 5vh;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+
+    gap: 1vw;
+}
+
+.link-item {
+    font-family: 'deyihei';
+    color: rgba($color: #fff, $alpha: 0.8);
+    font-size: 3vh;
+}
+
+.link-item:hover {
+    color: #ffffff;
+    box-shadow: #fff 0 0 8vw;
+}
+
+.splite-line {
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    width: 0.1vw;
+    height: 5vh;
+}
+
+@media screen and (max-width: 768px) {
+    .link-item .splite-line:hover {
+        color: #a31212;
+    }
+
+    .link-item {
+        font-family: 'deyihei';
+        color: rgba($color: #fff, $alpha: 0.8);
+        font-size: 2vh;
+    }
+
+    .splite-line {
+        background-color: rgba($color: #fff, $alpha: 0.8);
+        width: 0.1vw;
+        height: 3vh;
+    }
+}
+
+.set-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.logo {
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.name {
+    font-family: 'deyihei';
+    position: absolute;
+
+    text-align: center;
+    color: rgba($color: #fff, $alpha: 0.04);
+    font-size: 48vw;
+
+    user-select: none;
+
+    max-width: 100%;
+}
 </style>
