@@ -1,6 +1,16 @@
 <script setup>
 import anime from 'animejs/lib/anime.es.js';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+
+let email = ref(' ');
+
+function showEmail() {
+    email.value = 'xnors-studio@outlook.com';
+}
+
+function unshowEmail() {
+    email.value = ' ';
+}
 
 
 onMounted(() => {
@@ -18,49 +28,31 @@ onMounted(() => {
 
     myTimeline
         .add({
-            targets: '.name',
-            opacity: [0, 1],
-            translateY: [-window.innerHeight / 2, 0],
-            duration: 1000,
-            // easing: 'linear'
-        })
-        .add({
             targets: '.logo',
             opacity: [0, 1],
             translateX: [-window.innerWidth / 2, 0],
-            duration: 1000,
+            duration: 1600,
         }, '-=500')
         .add({
             targets: '.logo',
             translateY: [0, "-4vh"],
             duration: 1000,
             easing: 'easeOutExpo'
-        }, '-=200')
+        }, '-=600')
         .add({
-            targets: '.links',
-            opacity: [0, 1],
-            translateY: [window.innerHeight / 2, "-4vh"],
+            targets: ".links",
+            translateY: [0, '-5.2vh'],
+            opacity: 1,
             duration: 1000,
-        }, '-=800')
-})
-
-// anime({
-//   targets: '.logo',
-//   strokeDashoffset: [anime.setDashoffset, 0],
-//   easing: 'easeInOutSine',
-//   duration: 2000,
-//   direction: 'alternate'
-// });
-
-
+            easing: 'easeOutExpo'
+        })
+}
+)
 
 </script>
 
 <template>
     <div class="set-center">
-        <div class="name">
-            <p>Xnors</p>
-        </div>
         <img id="logox" class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
         <div class="links">
             <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
@@ -71,7 +63,8 @@ onMounted(() => {
             <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
             <div class="splite-line"></div>
 
-            <div class="link-item email-link" onclick="alert('邮箱: xnors-studio@outlook.com');" id="3">邮箱</div>
+            <div class="link-item email-link" @mouseenter="showEmail()" id="3" @mouseleave="unshowEmail()">邮箱
+            </div>
             <div class="splite-line"></div>
 
             <a class="link-item" onclick="alert('QQ群: 731499435');" id="4">QQ群</a>
@@ -89,8 +82,9 @@ a {
     text-decoration: none;
 }
 
+
 .links {
-    margin-top: 5vh;
+    margin-top: 6vh;
 
     position: relative;
     display: flex;
@@ -99,18 +93,23 @@ a {
     height: auto;
     width: auto;
 
-    gap: 1vw;
+    gap: 1.6vw;
 }
 
 .link-item {
     font-family: 'deyihei';
     color: rgba($color: #fff, $alpha: 0.8);
     font-size: 3vh;
+    text-align: center;
+
+    transition: all 0.4s ease;
 }
 
 .link-item:hover {
     color: #ffffff;
-    box-shadow: #fff 0 0 8vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    transform: scale(1.1) matrix(1, 0, -0.16, 1.02, 0, 0);
 }
 
 .splite-line {
@@ -127,12 +126,12 @@ a {
     .link-item {
         font-family: 'deyihei';
         color: rgba($color: #fff, $alpha: 0.8);
-        font-size: 2vh;
+        font-size: 3.2vh;
     }
 
     .splite-line {
         background-color: rgba($color: #fff, $alpha: 0.8);
-        width: 0.1vw;
+        width: 0.5vw;
         height: 3vh;
     }
 }
@@ -151,18 +150,5 @@ a {
     height: auto;
     max-width: 50%;
     max-height: 50%;
-}
-
-.name {
-    font-family: 'deyihei';
-    position: absolute;
-
-    text-align: center;
-    color: rgba($color: #fff, $alpha: 0.04);
-    font-size: 48vw;
-
-    user-select: none;
-
-    max-width: 100%;
 }
 </style>
