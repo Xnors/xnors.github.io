@@ -2,14 +2,39 @@
 import anime from 'animejs/lib/anime.es.js';
 import { onMounted, ref } from 'vue';
 
-let email = ref(' ');
+let showen = ref("");
 
-function showEmail() {
-    email.value = 'xnors-studio@outlook.com';
+function showSth(text, t, cc = NaN) {
+    let index = 0;
+    function myprint() {
+        if (index < text.length) {
+            showen.value = showen.value + text.charAt(index);
+            index++;
+        } else {
+            clearInterval(c);//输出完后关闭定时器
+        }
+    }
+    if (cc != NaN) {
+        clearInterval(cc);
+    }
+    showen.value = " ";
+    var c = setInterval(myprint, t);//定时器
+    return c;
 }
 
-function unshowEmail() {
-    email.value = ' ';
+var cc = showSth("Hi, there! Welcome to Xnors!", 70, NaN)
+
+function showEmail() {
+    // showen.value = "xnors-studio@outlook.com";
+    var cc = showSth("xnors-studio@outlook.com", 32, cc)
+}
+
+function unshow() {
+    showen.value = "Hi, there! Welcome to Xnors!";
+}
+
+function showGroupNumber() {
+    var cc = showSth("731499435", 32, cc)
 }
 
 
@@ -30,30 +55,30 @@ onMounted(() => {
         .add({
             targets: '.logo',
             opacity: [0, 1],
-            translateX: [-window.innerWidth / 2, 0],
-            duration: 1600,
+            translateY: ['100vh', 0],
+            duration: 2000,
         }, '-=500')
         .add({
-            targets: '.logo',
-            translateY: [0, "-4vh"],
-            duration: 1000,
-            easing: 'easeOutExpo'
-        }, '-=600')
-        .add({
             targets: ".links",
-            translateY: [0, '-5.2vh'],
+            translateY: [0],
             opacity: 1,
             duration: 1000,
             easing: 'easeOutExpo'
-        })
+        }, '-=1000')
+        .add({
+            targets: ".showenBox",
+            opacity: [0, 0.9],
+            duration: 10000,
+            easing: 'easeOutExpo'
+        }, '-=1000')
 }
 )
-
 </script>
 
 <template>
     <div class="set-center">
         <img id="logox" class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
+        <div class="showenBox" @click="myprint()">{{ showen }}</div>
         <div class="links">
             <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
             <img src="../assets/QQicon.jpg" alt="" class="QQ-icon"> -->
@@ -63,12 +88,13 @@ onMounted(() => {
             <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
             <div class="splite-line"></div>
 
-            <div class="link-item email-link" @mouseenter="showEmail()" id="3" @mouseleave="unshowEmail()">邮箱
+            <div class="link-item" @click="showEmail()" id="3">邮箱
             </div>
             <div class="splite-line"></div>
 
-            <a class="link-item" onclick="alert('QQ群: 731499435');" id="4">QQ群</a>
+            <a id="4" class="link-item" @click="showGroupNumber()">QQ群</a>
         </div>
+        <!-- onclick="alert('QQ群: 731499435');" -->
     </div>
 </template>
 
@@ -82,6 +108,13 @@ a {
     text-decoration: none;
 }
 
+.showenBox {
+    font-family: 'deyihei';
+
+    color: #ffffff;
+    margin-top: 2vh;
+    color: white;
+}
 
 .links {
     margin-top: 6vh;
