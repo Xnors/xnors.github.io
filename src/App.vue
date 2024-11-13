@@ -25,10 +25,9 @@ import Home from './views/Home.vue'
 }
 
 .home {
-  min-height: 120vh;
-  min-width: 100vw;
-  background-color: #000;
+  background-color: #030308;
   // scroll-snap-align: start; // 子元素滚动吸附到开始位置
+  height: auto;
 }
 
 .home2 {
