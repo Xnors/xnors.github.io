@@ -26,7 +26,12 @@ var cc = showSth("Hi, there! Welcome to Xnors!", 70, NaN)
 
 function showEmail() {
     // showen.value = "xnors-studio@outlook.com";
-    var cc = showSth("xnors-studio@outlook.com", 32, cc)
+    var cc = showSth("xnors-studio@outlook.com", 42, cc)
+}
+
+function showQQPD() {
+    // showen.value = "xnors-studio@outlook.com";
+    var cc = showSth("pdxnorscode", 42, cc)
 }
 
 function unshow() {
@@ -34,11 +39,15 @@ function unshow() {
 }
 
 function showGroupNumber() {
-    var cc = showSth("731499435", 32, cc)
+    var cc = showSth("731499435", 42, cc)
 }
 
 
 onMounted(() => {
+
+    const delay = 500;
+
+
     anime({
         targets: '.links',
         translateY: 500,
@@ -48,7 +57,8 @@ onMounted(() => {
     // 获取元素
     var myTimeline = anime.timeline({
         // easing: 'easeOutExpo',
-        duration: 0
+        duration: 0,
+        loop: false,
     });
 
     myTimeline
@@ -60,7 +70,7 @@ onMounted(() => {
         }, '-=500')
         .add({
             targets: ".links",
-            translateY: [0],
+            translateY: ["-100vh",0],
             opacity: 1,
             duration: 1000,
             easing: 'easeOutExpo'
@@ -68,16 +78,17 @@ onMounted(() => {
         .add({
             targets: ".showenBox",
             opacity: [0, 0.9],
-            duration: 10000,
+            duration: 6000,
             easing: 'easeOutExpo'
-        }, '-=1000')
-}
-)
+        }, '-=3000')
+})
+
+
 </script>
 
 <template>
     <div class="set-center">
-        <img id="logox" class="logo" src="../assets/svgs/CENTER-logo-name-motto.svg" alt="" />
+        <img id="logox" class="logo" src="../assets/xlogo.svg" alt="" />
         <div class="showenBox" @click="myprint()">{{ showen }}</div>
         <div class="links">
             <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
@@ -93,6 +104,11 @@ onMounted(() => {
             <div class="splite-line"></div>
 
             <a id="4" class="link-item" @click="showGroupNumber()">QQ群</a>
+            <div class="splite-line"></div>
+
+            <div class="link-item" @click="showQQPD()" id="5">QQ频道
+            </div>
+
         </div>
         <!-- onclick="alert('QQ群: 731499435');" -->
     </div>
@@ -114,6 +130,8 @@ a {
     color: #ffffff;
     margin-top: 2vh;
     color: white;
+
+    letter-spacing: 1px;
 }
 
 .links {
@@ -126,7 +144,7 @@ a {
     height: auto;
     width: auto;
 
-    gap: 1.6vw;
+    gap: 2.2vw;
 }
 
 .link-item {
@@ -174,7 +192,6 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100vh;
 }
 
