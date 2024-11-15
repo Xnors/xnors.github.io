@@ -204,7 +204,7 @@ a {
     align-items: center;
     height: 100vh;
 
-    background: linear-gradient(318deg, #1a1022, #111d22);
+    background: linear-gradient(318deg, #281a33, #233942);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
 }
