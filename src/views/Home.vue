@@ -204,9 +204,9 @@ a {
     align-items: center;
     height: 100vh;
 
-    background: linear-gradient(318deg, #281a33, #232542, #233942);
+    background: linear-gradient(318deg, #1d1225, #131424, #17252b);
     background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
+    animation: gradient 20s ease infinite;
 }
 
 .logo {
