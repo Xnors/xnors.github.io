@@ -70,8 +70,9 @@ onMounted(() => {
         }, '-=500')
         .add({
             targets: ".links",
-            translateY: ["-100vh",0],
-            opacity: 1,
+            translateY: ["60vh", 0],
+            opacity: [0, 1],
+            scale: [0.1, 1],
             duration: 1000,
             easing: 'easeOutExpo'
         }, '-=1000')
@@ -103,8 +104,8 @@ onMounted(() => {
             </div>
             <div class="splite-line"></div>
 
-            <a id="4" class="link-item" @click="showGroupNumber()">QQ群</a>
-            <div class="splite-line"></div>
+            <!-- <a id="4" class="link-item" @click="showGroupNumber()">QQ群</a>
+            <div class="splite-line"></div> -->
 
             <div class="link-item" @click="showQQPD()" id="5">QQ频道
             </div>
@@ -132,6 +133,12 @@ a {
     color: white;
 
     letter-spacing: 1px;
+
+    font-size: 120%;
+
+    min-height: 3.2%;
+
+    background-color: #ffffff00;
 }
 
 .links {
@@ -165,7 +172,7 @@ a {
 
 .splite-line {
     background-color: rgba($color: #fff, $alpha: 0.8);
-    width: 0.1vw;
+    width: 0.12vw;
     height: 5vh;
 }
 
@@ -177,13 +184,14 @@ a {
     .link-item {
         font-family: 'deyihei';
         color: rgba($color: #fff, $alpha: 0.8);
-        font-size: 3.2vh;
+        font-size: 2.7vh;
+        margin: 2vw;
     }
 
     .splite-line {
         background-color: rgba($color: #fff, $alpha: 0.8);
-        width: 0.5vw;
-        height: 3vh;
+        width: 0.7vw;
+        height: 3.3vh;
     }
 }
 
