@@ -34,4 +34,5 @@ import About from './views/About.vue';
   background-color: #fcfcfc;
   height: auto;
 }
+
 </style>

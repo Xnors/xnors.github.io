@@ -4,4 +4,6 @@
 
 该项目版权归Xnors所有。侵权必究。
 
-我们的官网：<https://xnors.github.io/>
+我们的官网：
+ - <https://xnors.github.io/>
+ - <https://xnors.us.kg/>

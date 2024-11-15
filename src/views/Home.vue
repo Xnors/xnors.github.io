@@ -119,11 +119,13 @@ onMounted(() => {
 * {
     margin: 0;
     padding: 0;
+    mix-blend-mode: difference
 }
 
 a {
     text-decoration: none;
 }
+
 
 .showenBox {
     font-family: 'deyihei';
@@ -201,6 +203,10 @@ a {
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    background: linear-gradient(318deg, #1a1022, #111d22);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
 }
 
 .logo {
@@ -208,5 +214,7 @@ a {
     height: auto;
     max-width: 50%;
     max-height: 50%;
+
+    mix-blend-mode: difference
 }
 </style>
