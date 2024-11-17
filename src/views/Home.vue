@@ -1,6 +1,8 @@
-<script setup>
+<script lang="ts" setup>
 import anime from 'animejs/lib/anime.es.js';
+import { copyText } from 'vue3-clipboard'
 import { onMounted, ref } from 'vue';
+import { alphaSliderProps } from 'element-plus/es/components/color-picker/src/props/alpha-slider.mjs';
 
 let showen = ref("");
 
@@ -17,34 +19,63 @@ function showSth(text, t, cc = NaN) {
     if (cc != NaN) {
         clearInterval(cc);
     }
-    showen.value = " ";
+    showen.value = "";
     var c = setInterval(myprint, t);//定时器
     return c;
 }
 
-var cc = showSth("Hi, there! Welcome to Xnors!", 70, NaN)
+var cc = showSth("Hi, there! Welcome to Xnors!", 42, NaN)
 
-function showEmail() {
-    // showen.value = "xnors-studio@outlook.com";
-    var cc = showSth("xnors-studio@outlook.com", 42, cc)
+class Shower {
+    static showEmail() {
+        // showen.value = "xnors-studio@outlook.com";
+        var cc = showSth("xnors-studio@outlook.com", 20, cc)
+    }
+
+    static showQQPD() {
+        // showen.value = "xnors-studio@outlook.com";
+        var cc = showSth("pdxnorscode", 26, cc)
+    }
+
+    static unshow() {
+        var cc = showSth("Hi, there! Welcome to Xnors!", 12, cc);
+    }
+
+    static showGroupNumber() {
+        var cc = showSth("731499435", 30, cc)
+    }
 }
 
-function showQQPD() {
-    // showen.value = "xnors-studio@outlook.com";
-    var cc = showSth("pdxnorscode", 42, cc)
+function showToast(t: string) {
+    var toast = document.getElementById("toast");
+    toast.innerHTML = t;
+    toast.className = "toast show";
+    setTimeout(
+        function () {
+            toast.className = toast.className.replace("show", "");
+        }, 2000
+    );
 }
 
-function unshow() {
-    showen.value = "Hi, there! Welcome to Xnors!";
-}
+function copy() {
+    // 复制showen的值到剪切板
 
-function showGroupNumber() {
-    var cc = showSth("731499435", 42, cc)
-}
+    if (showen.value == "Hi, there! Welcome to Xnors!") {
+        showToast("(✿◡‿◡) 别点我 (*/ω＼*)")
+        return;
+    }
 
+    copyText(showen.value, undefined, (error) => {
+        if (error) {
+            showToast(`!复制失败: ${error}!`)
+        } else {
+            showToast(`复制成功`);
+        }
+    });
+    Shower.unshow();
+}
 
 onMounted(() => {
-
     const delay = 500;
 
 
@@ -88,9 +119,14 @@ onMounted(() => {
 </script>
 
 <template>
+
     <div class="set-center">
+        <div id="toast" class="toast">这是一个消息提示框</div>
         <img id="logox" class="logo" src="../assets/xlogo.svg" alt="" />
-        <div class="showenBox" @click="myprint()">{{ showen }}</div>
+        <div class="showenBox" @click="copy()">
+            {{ showen }}
+            <img src="../assets/copy-icon.svg" class="copy-icon" />
+        </div>
         <div class="links">
             <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
             <img src="../assets/QQicon.jpg" alt="" class="QQ-icon"> -->
@@ -100,14 +136,14 @@ onMounted(() => {
             <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
             <div class="splite-line"></div>
 
-            <div class="link-item" @click="showEmail()" id="3">邮箱
+            <div class="link-item" @click="Shower.showEmail()" id="3">邮箱
             </div>
             <div class="splite-line"></div>
 
             <!-- <a id="4" class="link-item" @click="showGroupNumber()">QQ群</a>
             <div class="splite-line"></div> -->
 
-            <div class="link-item" @click="showQQPD()" id="5">QQ频道
+            <div class="link-item" @click="Shower.showQQPD()" id="5">QQ频道
             </div>
 
         </div>
@@ -116,6 +152,8 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@import url("../styles/toast.scss");
+
 * {
     margin: 0;
     padding: 0;
@@ -128,6 +166,16 @@ a {
 
 
 .showenBox {
+    .copy-icon {
+        height: 2.4vh;
+        margin-left: calc(0.3vw + 0.3vh);
+        filter: invert(1);
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-family: 'deyihei';
 
     color: #ffffff;
@@ -204,7 +252,7 @@ a {
     align-items: center;
     height: 100vh;
 
-    background: linear-gradient(318deg, #1d1225, #131424, #17252b);
+    background: linear-gradient(318deg, #17252b, #131624, #181225);
     background-size: 400% 400%;
     animation: gradient 20s ease infinite;
 }
