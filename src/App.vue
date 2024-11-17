@@ -7,9 +7,9 @@ import About from './views/About.vue';
   <div class="home">
     <Home />
   </div>
-  <div class="home2">
+  <!-- <div class="home2">
     <About />
-  </div>
+  </div> -->
 
   <!-- <div class="home">
     <Home />

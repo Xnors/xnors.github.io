@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "animejs": "^3.2.2",
+    "element-plus": "^2.8.8",
     "vue": "^3.4.35",
-    "vue-router": "^4.4.3"
+    "vue-router": "^4.4.3",
+    "vue3-clipboard": "^1.0.0"
   },
   "devDependencies": {
     "@types/animejs": "^3.1.12",
