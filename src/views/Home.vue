@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import anime from 'animejs/lib/anime.es.js';
 import { copyText } from 'vue3-clipboard'
 import { onMounted, ref } from 'vue';
@@ -6,7 +6,7 @@ import { alphaSliderProps } from 'element-plus/es/components/color-picker/src/pr
 
 let showen = ref("");
 
-function showSth(text, t, cc = NaN) {
+function showSth(text, t, cc) {
     let index = 0;
     function myprint() {
         if (index < text.length) {
@@ -46,7 +46,7 @@ class Shower {
     }
 }
 
-function showToast(t: string) {
+function showToast(t) {
     var toast = document.getElementById("toast");
     toast.innerHTML = t;
     toast.className = "toast show";
@@ -121,7 +121,7 @@ onMounted(() => {
 <template>
 
     <div class="set-center">
-        <div id="toast" class="toast">这是一个消息提示框</div>
+        <div id="toast" class="toast">Xnors!</div>
         <img id="logox" class="logo" src="../assets/xlogo.svg" alt="" />
         <div class="showenBox" @click="copy()">
             {{ showen }}
@@ -157,7 +157,7 @@ onMounted(() => {
 * {
     margin: 0;
     padding: 0;
-    mix-blend-mode: difference
+    // mix-blend-mode: difference
 }
 
 a {
@@ -187,8 +187,6 @@ a {
     font-size: 120%;
 
     min-height: 3.2%;
-
-    background-color: #ffffff00;
 }
 
 .links {
@@ -217,7 +215,7 @@ a {
     color: #ffffff;
     margin-left: 5vw;
     margin-right: 5vw;
-    transform: scale(1.1) matrix(1, 0, -0.16, 1.02, 0, 0);
+    transform: scale(1.1) matrix(0.99, -0.01, -0.1, 1.12, 1, -1);
 }
 
 .splite-line {
@@ -252,9 +250,9 @@ a {
     align-items: center;
     height: 100vh;
 
-    background: linear-gradient(318deg, #17252b, #131624, #181225);
+    background: linear-gradient(318deg, #0d1518, #0e111b, #14101f);
     background-size: 400% 400%;
-    animation: gradient 20s ease infinite;
+    animation: gradient 12s ease infinite;
 }
 
 .logo {
@@ -262,6 +260,7 @@ a {
     height: auto;
     max-width: 50%;
     max-height: 50%;
+    color: #ffffff;
 
     // mix-blend-mode: difference
 }
