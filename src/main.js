@@ -1,14 +1,11 @@
-import { createApp } from 'vue';
-import VueClipboard from 'vue3-clipboard' // 引入VueClipboard, 用于复制文本到剪贴板
+import { mount } from 'svelte'
 import './index.css'
 
-import App from './App.vue';
+// @ts-ignore
+import App from './App.svelte'
 
-const app = createApp(App);
+const app = mount(App, {
+  target: document.getElementById('app'),
+})
 
-app
-    .use(VueClipboard, {
-        autoSetContainer: true,
-        appendToBody: true,
-    })
-    .mount('#app');
+export default app

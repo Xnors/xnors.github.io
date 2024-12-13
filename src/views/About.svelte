@@ -1,6 +1,6 @@
-<template>
+<div>
     <div class="set-center"></div>
-</template>
+</div>
 
 <style>
 * {
