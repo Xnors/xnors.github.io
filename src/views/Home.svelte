@@ -140,11 +140,11 @@
 <div>
   <div class="set-center">
     <div id="toast" class="toast">复制成功!</div>
-    <img id="logox" class="logo" src="src/assets/xlogo.svg" alt="" />
+    <img id="logox" class="logo" src="../assets/xlogo.svg" alt="" />
     <div class="showenBox">
       {showen}
       <button use:copy={"Hello from alert"} on:click={() => showToast()}
-        ><img src="src\assets\copy-icon.svg" class="copy-icon" alt="" /></button
+        ><img src="..\assets\copy-icon.svg" class="copy-icon" alt="" /></button
       >
     </div>
     <div class="links">
