@@ -2,6 +2,9 @@
   import anime from "animejs/lib/anime.es.js";
   import { onMount } from "svelte";
   import { copy } from "svelte-copy";
+  import Xlogo from "./views/svgs/Xlogo.svelte";
+  // @ts-ignore
+  import CopyIcon from "./views/svgs/CopyIcon.svelte";
 
   let showen = "";
 
@@ -21,24 +24,29 @@
     return c;
   }
 
+  // @ts-ignore
   var cc = showSth("Hi, there! Welcome to Xnors!", 42);
 
   class Shower {
     static showEmail() {
       // showen = "xnors-studio@outlook.com";
+      // @ts-ignore
       var cc = showSth("xnors-studio@outlook.com", 20);
     }
 
     static showQQPD() {
       // showen = "xnors-studio@outlook.com";
+      // @ts-ignore
       var cc = showSth("pdxnorscode", 26);
     }
 
     static unshow() {
+      // @ts-ignore
       var cc = showSth("Hi, there! Welcome to Xnors!", 12);
     }
 
     static showGroupNumber() {
+      // @ts-ignore
       var cc = showSth("731499435", 30);
     }
   }
@@ -89,6 +97,7 @@
   //   }
 
   onMount(() => {
+    // @ts-ignore
     const delay = 500;
 
     anime({
@@ -135,45 +144,56 @@
         "-=3000"
       );
   });
+
+  // import {xlogo, copyicon}from "./main.js"
+
+  // let xlogo = new URL(`../../public/xlogo.svg`, import.meta.url).href;
 </script>
 
-<div>
-  <div class="set-center">
-    <div id="toast" class="toast">复制成功!</div>
-    <img id="logox" class="logo" src="src/assets/xlogo.svg" alt="" />
-    <div class="showenBox">
-      {showen}
-      <button use:copy={"Hello from alert"} on:click={() => showToast()}
-        ><img src="src/assets/copy-icon.svg" class="copy-icon" alt="" /></button
-      >
-    </div>
-    <div class="links">
-      <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
+<main>
+  <div>
+    <div class="set-center">
+      <div id="toast" class="toast">复制成功!</div>
+      <!-- <img id="logox" class="logo" src="/assets/xlogo.svg" alt="" /> -->
+      <Xlogo />
+
+      <div class="showenBox">
+        {showen}
+        <button use:copy={showen} on:click={() => showToast()}>
+          <CopyIcon />
+        </button>
+      </div>
+      <div class="links">
+        <!-- <img src="../assets/GITHUBICON.jpg" alt="" class="github-icon">
             <img src="../assets/QQicon.jpg" alt="" class="QQ-icon"> -->
-      <a
-        href="https://github.com/orgs/Xnors/repositories"
-        class="link-item"
-        id="1">项目</a
-      >
-      <div class="splite-line"></div>
-      <a href="https://xnors.github.io/docs" class="link-item" id="2">文档</a>
-      <div class="splite-line"></div>
+        <a
+          href="https://github.com/orgs/Xnors/repositories"
+          class="link-item"
+          id="1">项目</a
+        >
+        <div class="splite-line"></div>
+        <a href="https://xnors.github.io/docs" class="link-item" id="2">文档</a>
+        <div class="splite-line"></div>
 
-      <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
-      <div class="splite-line"></div>
+        <a href="https://github.com/xnors" class="link-item" id="2">Github</a>
+        <div class="splite-line"></div>
 
-      <button class="link-item" on:click={Shower.showEmail} id="3">邮箱</button>
-      <div class="splite-line"></div>
+        <button class="link-item" on:click={Shower.showEmail} id="3"
+          >邮箱</button
+        >
+        <div class="splite-line"></div>
 
-      <!-- <a id="4" class="link-item" on:click={showGroupNumber">QQ群</a>
+        <!-- <a id="4" class="link-item" on:click={showGroupNumber">QQ群</a>
             <div class="splite-line"></div> -->
 
-      <button class="link-item" on:click={Shower.showQQPD} id="5">QQ频道</button
-      >
+        <button class="link-item" on:click={Shower.showQQPD} id="5"
+          >QQ频道</button
+        >
+      </div>
+      <!-- onclick="alert('QQ群: 731499435');" -->
     </div>
-    <!-- onclick="alert('QQ群: 731499435');" -->
   </div>
-</div>
+</main>
 
 <style lang="scss">
   .toast {
@@ -227,15 +247,6 @@
   }
 
   .showenBox {
-    .copy-icon {
-      height: 2.4vh;
-      margin-left: calc(0.3vw + 0.3vh);
-      filter: invert(1);
-    }
-    .copy-icon:hover {
-      filter: invert(0.5);
-    }
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -305,7 +316,7 @@
 
       flex-wrap: wrap;
     }
-    .link-item .splite-line:hover {
+    .link-item:hover {
       color: #a31212;
     }
 
@@ -332,18 +343,8 @@
     height: 100vh;
     width: 100%;
 
-    background: linear-gradient(318deg, #0d1518, #0e111b, #14101f);
+    background: linear-gradient(318deg, #111d22, #141629, #120f1d);
     background-size: 400% 400%;
-    animation: gradient 12s ease infinite;
-  }
-
-  .logo {
-    width: auto;
-    height: auto;
-    max-width: 50%;
-    max-height: 50%;
-    color: #ffffff;
-
-    // mix-blend-mode: difference
+    animation: gradient 6s ease infinite;
   }
 </style>

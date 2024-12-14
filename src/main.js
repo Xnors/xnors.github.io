@@ -1,6 +1,7 @@
 import { mount } from 'svelte'
 import './index.css'
 
+
 // @ts-ignore
 import App from './App.svelte'
 
@@ -9,3 +10,4 @@ const app = mount(App, {
 })
 
 export default app
+
