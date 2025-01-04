@@ -8,15 +8,11 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "sass-embedded": "^1.83.0",
-    "svelte": "^5.2.7",
-    "vite": "^6.0.1"
-  },
   "dependencies": {
-    "animejs": "^3.2.2",
-    "svelte-copy": "^2.0.0"
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.5"
   }
 }
