@@ -6,3 +6,8 @@
 :root {
   background-color: #121212;
 }
+
+/* 禁用滚动条 */
+body::-webkit-scrollbar {
+  display: none;
+}
