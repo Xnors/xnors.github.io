@@ -11,3 +11,8 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+@font-face {
+  font-family: deyihei;
+  src: url("./assets/font/SmileySans-Oblique.ttf");
+}

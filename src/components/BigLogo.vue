@@ -48,8 +48,6 @@
   animation-range: entry 0 80vh;
 
   background-color: rgb(0, 0, 0);
-
-  mix-blend-mode: difference
 }
 
 .big-logo {

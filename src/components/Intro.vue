@@ -1,7 +1,8 @@
 <template>
     <div class="home">
-        <h1>Welcome to Xnors!</h1>
-        <h1>页面待开发</h1>
+        <article>
+            Hi! 这里是 <a href="https://github.com/xnors/">异或科技工作室</a>
+        </article>
     </div>
 </template>
 
@@ -11,5 +12,15 @@
     width: 100%;
     height: 100vh;
     padding: calc(1.2vw + 1.3vh);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    font-family: deyihei;
+
+    font-size: calc(2vw + 2vh);
 }
 </style>
