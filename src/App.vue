@@ -8,7 +8,7 @@ import { ref } from 'vue';
 
 let showLogo = ref(true);
 
-// 监听页面是否滚动到了 100vh
+// 监听页面是否滚动到了 100vh , 控制logo的显示
 window.addEventListener('scroll', () => {
   if (window.scrollY >= window.innerHeight ) {
     showLogo.value = false;

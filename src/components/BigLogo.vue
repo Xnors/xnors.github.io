@@ -18,7 +18,7 @@
   100% {
     transform: rotate(180deg);
     opacity: 0;
-    scale: 2.6;
+    scale: 3.14;
   }
 }
 
@@ -45,13 +45,14 @@
 
   animation: bgAnimation 1s linear forwards;
   animation-timeline: scroll();
-  animation-range: entry 0 80vh;
+  animation-range: entry 0 100vh;
 
   background-color: rgb(0, 0, 0);
 }
 
 .big-logo {
-  width: 20vw;
+  /* width: 20vw; */
+  width: calc(15vw + 10vh);
   height: auto;
 
   animation: logoAnimation 1s linear forwards;
@@ -63,7 +64,7 @@
 
 @media screen and (max-width: 768px) {
   .big-logo {
-    width: 50vw;
+    width: 42vw;
   }
 }
 </style>

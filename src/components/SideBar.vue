@@ -5,7 +5,7 @@
     <label for="navcheck" aria-hidden="true" title="menu">
         <span class="burger">
             <span class="bar">
-                <span class="visuallyhidden">Menu</span>
+                <span class="visuallyhidden">666</span>
             </span>
         </span>
     </label>
@@ -47,7 +47,7 @@ label {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(darken(#424049, 40%), .75);
+        background-color: rgba(darken(#7c7c7c, 42%), .75);
         content: '';
         opacity: 0;
         pointer-events: none;
@@ -126,7 +126,7 @@ nav {
         z-index: -1;
         width: $nav-width-mobile;
         // background: #8f7575;
-        background-image: linear-gradient(to bottom right, #283442df, #412639df);
+        background-image: linear-gradient(to bottom right, #2c3847, #4d2d43);
         content: '';
         transform: skewX(15deg) translateX(-100%);
         transform-origin: bottom left;

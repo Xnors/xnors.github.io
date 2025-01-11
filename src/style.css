@@ -16,3 +16,8 @@ body::-webkit-scrollbar {
   font-family: deyihei;
   src: url("./assets/font/SmileySans-Oblique.ttf");
 }
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
