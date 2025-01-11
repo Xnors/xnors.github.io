@@ -16,6 +16,6 @@ const props = defineProps({
 <style scoped>
 .empty {
     width: 100%;
-    background-color: #121212;;
+    background-color: #0f0f0f;;
 }
 </style>

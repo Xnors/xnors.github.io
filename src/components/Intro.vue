@@ -7,8 +7,9 @@
 
 <style scoped>
 .home {
-    background-color: rgb(196, 196, 196);
+    background-color: rgb(19, 19, 19);
     width: 100%;
     height: 100vh;
+    padding: calc(1.2vw + 1.3vh);
 }
 </style>

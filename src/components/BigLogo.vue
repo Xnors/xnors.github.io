@@ -18,7 +18,7 @@
   100% {
     transform: rotate(180deg);
     opacity: 0;
-    scale: 2.4;
+    scale: 2.6;
   }
 }
 
@@ -48,6 +48,8 @@
   animation-range: entry 0 80vh;
 
   background-color: rgb(0, 0, 0);
+
+  mix-blend-mode: difference
 }
 
 .big-logo {
