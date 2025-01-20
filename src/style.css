@@ -4,8 +4,15 @@
 }
 
 :root {
-  background-color: #0f0f0f;
+  /* background-color: #0f0f0f; */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('./assets/leather-texture.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
 }
+
 
 /* 禁用滚动条 */
 body::-webkit-scrollbar {
@@ -17,7 +24,7 @@ body::-webkit-scrollbar {
   src: url("./assets/font/SmileySans-Oblique.ttf");
 }
 
-a{
+a {
   text-decoration: none;
   cursor: pointer;
 }

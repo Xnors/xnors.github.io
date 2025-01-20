@@ -10,8 +10,8 @@
         </span>
     </label>
     <nav id="menu">
-        <a href="#">Lorem.</a>
-        <a href="#">Nesciunt!</a>
+        <a href="https://www.github.com/Xnors">GitHub</a>
+        <a href="https://www.jihulab.com/Xnors">极狐GitLab</a>
         <a href="#">Magnam.</a>
         <a href="#">Ipsum.</a>
         <a href="#">Voluptatem.</a>
@@ -25,6 +25,11 @@ $timing-function : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 $nav-width-desktop : 40em;
 $nav-width-mobile : 25em;
 $nav-item-nb : 6;
+
+* {
+    font-family: "deyihei";
+    letter-spacing: 1.2px;
+}
 
 input {
     position: fixed;
@@ -153,6 +158,9 @@ nav {
         transform: translateX(-100%);
         transition: color .15s, transform .5s;
         transition-timing-function: $timing-function;
+        position: relative;
+        transition: all .2s;
+        width: max-content;
 
         @for $i from 1 through $nav-item-nb {
             &:nth-child(#{$i}) {
@@ -163,7 +171,9 @@ nav {
 
         &:hover,
         &:focus {
-            color: black;
+            color: rgb(118, 106, 187);
+            scale: 1.3;
+            margin-left: max(1em, 1.2vw);
         }
     }
 }

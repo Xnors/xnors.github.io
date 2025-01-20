@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 
 const box = ref(null);
 const logo = ref(null);
@@ -7,6 +7,13 @@ const logo = ref(null);
 function handleScroll() {
   const scrollPosition = window.scrollY;
   const viewportHeight = window.innerHeight;
+  if (scrollPosition > viewportHeight) {
+    logo.value.style.scale = 0;
+    box.value.style.scale = 0;
+  }else{
+    logo.value.style.scale = 1;
+    box.value.style.scale = 1;
+  }
 
   // 动画范围：从顶部开始，到 100vh 的范围内触发动画
   const animationRange = viewportHeight;
@@ -20,7 +27,7 @@ function handleScroll() {
 
   // Logo 动画
   const logoOpacity = 1 - progress;
-  const logoScale = 1 + progress * 2.14; // 从 1 到 3.14
+  const logoScale = 1 + progress * 1.14;
   const logoRotation = progress * 180; // 从 0 到 180 度
 
   logo.value.style.opacity = logoOpacity;
@@ -30,7 +37,9 @@ function handleScroll() {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
-
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -47,13 +56,13 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   background-color: #030303;
-  transition: opacity 0.1s linear;
+  /* transition: opacity 0.1s linear; */
 }
 
 .big-logo {
   width: calc(15vw + 10vh);
   height: auto;
-  transition: opacity 0.1s linear, transform 0.1s linear;
+  /* transition: opacity 0.1s linear, transform 0.1s linear; */
 }
 
 @media screen and (max-width: 768px) {

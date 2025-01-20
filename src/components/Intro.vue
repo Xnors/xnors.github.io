@@ -13,7 +13,7 @@
 .home {
     background-color: rgb(12, 12, 14);
     width: 100%;
-    height: 100vh;
+    height: 101vh;
     padding: calc(1.2vw + 1.3vh);
 
     display: flex;
@@ -31,5 +31,8 @@ article {
 
 a {
     color: #b2b4ff;
+    &:hover {
+        color: #ffffff;
+    }
 }
 </style>

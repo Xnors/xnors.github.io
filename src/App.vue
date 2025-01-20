@@ -4,27 +4,13 @@ import Intro from './components/Intro.vue';
 import Empty from './components/Empty.vue';
 import SideBar from './components/SideBar.vue';
 
-import { ref } from 'vue';
-
-let showLogo = ref(true);
-
-// 监听页面是否滚动到了 100vh , 控制logo的显示
-window.addEventListener('scroll', () => {
-  if (window.scrollY >= window.innerHeight * 1.1) {
-    showLogo.value = false;
-  } else {
-    showLogo.value = true;
-    // document.getElementById("logo").style.opacity = window.scrollY / window.innerHeight;
-  }
-});
-
 
 </script>
 
 <template>
   <SideBar style="max-width: 100vw;" />
 
-  <BigLogo style="position: fixed;" v-if="showLogo" />
+  <BigLogo style="position: fixed;" />
   <Empty height_vh="100" />
   <Intro style="z-index: 999;" />
 
