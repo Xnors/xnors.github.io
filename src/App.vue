@@ -10,12 +10,15 @@ let showLogo = ref(true);
 
 // 监听页面是否滚动到了 100vh , 控制logo的显示
 window.addEventListener('scroll', () => {
-  if (window.scrollY >= window.innerHeight ) {
+  if (window.scrollY >= window.innerHeight * 1.1) {
     showLogo.value = false;
   } else {
     showLogo.value = true;
+    // document.getElementById("logo").style.opacity = window.scrollY / window.innerHeight;
   }
 });
+
+
 </script>
 
 <template>
