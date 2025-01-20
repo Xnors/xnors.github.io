@@ -156,24 +156,23 @@ nav {
         text-decoration: none;
         font-weight: 500;
         transform: translateX(-100%);
-        transition: color .15s, transform .5s;
+        transition: color .15s, transform .5s,scale .25s,margint-left .25s;
         transition-timing-function: $timing-function;
         position: relative;
-        transition: all .2s;
-        width: max-content;
+
 
         @for $i from 1 through $nav-item-nb {
             &:nth-child(#{$i}) {
                 transition-delay: 0s,
-                #{50 + (50 * $i)}ms;
+                #{50 + (54 * $i)}ms;
             }
         }
 
         &:hover,
         &:focus {
             color: rgb(118, 106, 187);
-            scale: 1.3;
-            margin-left: max(1em, 1.2vw);
+            scale: 1.4;
+            margin-left: 0;
         }
     }
 }

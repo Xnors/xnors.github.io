@@ -8,6 +8,7 @@ import SideBar from './components/SideBar.vue';
 </script>
 
 <template>
+  
   <SideBar style="max-width: 100vw;" />
 
   <BigLogo style="position: fixed;" />
