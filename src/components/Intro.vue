@@ -16,7 +16,7 @@
 .home {
     background-color: rgb(12, 12, 14);
     width: 100%;
-    height: 101vh;
+    height: 100vh;
     padding: calc(1.2vw + 1.3vh);
 
     display: flex;
@@ -29,7 +29,9 @@ article {
 
     text-align: center;
 
-    font-size: calc(2.5vw + 0.8vh);
+    font-size: calc(2.2vw + 1.1vh);
+
+    transition: all 0.3s ease-in-out;
 }
 
 a {

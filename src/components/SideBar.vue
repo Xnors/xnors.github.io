@@ -132,10 +132,10 @@ nav {
         width: $nav-width-mobile;
         // background: #8f7575;
 
-        background-image: linear-gradient(to bottom right, #3d3d3daa, #050505aa);
+        background-image: linear-gradient(to bottom right, #3d3d3da0, #050505a0);
         border: #333333 2px solid;
-        -webkit-backdrop-filter: blur(2.4px);
-        backdrop-filter: blur(2.4px);
+        -webkit-backdrop-filter: blur(2.8px);
+        backdrop-filter: blur(2.8px);
 
         content: '';
         transform: skewX(15deg) translateX(-100%);

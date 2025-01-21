@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref, onUnmounted } from 'vue';
+// import { Cursor } from 'motion';
 
 const box = ref(null);
 const logo = ref(null);
@@ -10,7 +11,7 @@ function handleScroll() {
   if (scrollPosition > viewportHeight) {
     logo.value.style.scale = 0;
     box.value.style.scale = 0;
-  }else{
+  } else {
     logo.value.style.scale = 1;
     box.value.style.scale = 1;
   }
@@ -34,8 +35,13 @@ function handleScroll() {
   logo.value.style.transform = `rotate(${logoRotation}deg) scale(${logoScale})`;
 }
 
+
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
+  // window.addEventListener('scroll', () => {
+
+  // });
 });
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
