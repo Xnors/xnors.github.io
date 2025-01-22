@@ -1,5 +1,9 @@
 <!-- CopyFrom https://codepen.io/Twikito/pen/zGdqVO -->
 
+<script setup>
+import { RouterLink } from 'vue-router'
+</script>
+
 <template>
     <input type="checkbox" id="navcheck" role="button" title="menu">
     <label for="navcheck" aria-hidden="true" title="menu">
@@ -12,6 +16,7 @@
     <nav id="menu">
         <a href="https://www.github.com/Xnors">GitHub</a>
         <a href="https://www.jihulab.com/Xnors">极狐GitLab</a>
+        <RouterLink to="/test">路由测试页面</RouterLink>
         <a href="#">Magnam.</a>
         <a href="#">Ipsum.</a>
         <a href="#">Voluptatem.</a>
@@ -156,7 +161,7 @@ nav {
         text-decoration: none;
         font-weight: 500;
         transform: translateX(-100%);
-        transition: color .15s, transform .5s,scale .25s,margint-left .25s;
+        transition: color .15s, transform .5s, scale .25s, margint-left .25s;
         transition-timing-function: $timing-function;
         position: relative;
 

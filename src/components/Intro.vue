@@ -16,12 +16,14 @@
 .home {
     background-color: rgb(12, 12, 14);
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     padding: calc(1.2vw + 1.3vh);
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border: #ffffff0f 1px solid;
 }
 
 article {

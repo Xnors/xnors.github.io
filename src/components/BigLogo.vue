@@ -16,8 +16,8 @@ function handleScroll() {
     box.value.style.scale = 1;
   }
 
-  // 动画范围：从顶部开始，到 100vh 的范围内触发动画
-  const animationRange = viewportHeight;
+  // 动画范围：从顶部开始，到 80vh 的范围内触发动画
+  const animationRange = viewportHeight*0.8;
 
   // 计算动画进度
   const progress = Math.min(1, Math.max(0, scrollPosition / animationRange));
@@ -63,6 +63,7 @@ onUnmounted(() => {
   align-items: center;
   background-color: #030303;
   /* transition: opacity 0.1s linear; */
+  border: 1px solid #ffffff0f; 
 }
 
 .big-logo {
