@@ -20,13 +20,12 @@ import { RouterLink } from 'vue-router'
         <a href="#">Magnam.</a>
         <a href="#">Ipsum.</a>
         <a href="#">Voluptatem.</a>
-        <a href="#">Quibusdam.</a>
     </nav>
 </template>
 
 
 <style type="text/scss" lang="scss">
-$timing-function : cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$timing-function : cubic-bezier(0.190, 1.000, 0.220, 1.00);
 $nav-width-desktop : 40em;
 $nav-width-mobile : 25em;
 $nav-item-nb : 6;
