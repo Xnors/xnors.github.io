@@ -27,7 +27,7 @@ function handleScroll() {
   box.value.style.opacity = bgOpacity;
 
   // Logo 动画
-  const logoOpacity = 1 - progress;
+  const logoOpacity = (1 - progress)*0.82;
   const logoScale = 1 + progress * 1.14;
   const logoRotation = progress * 180; // 从 0 到 180 度
 
@@ -68,6 +68,7 @@ onUnmounted(() => {
 .big-logo {
   width: calc(15vw + 10vh);
   height: auto;
+  opacity: 0.82;
   /* filter: invert(100%); */
   /* transition: opacity 0.1s linear, transform 0.1s linear; */
 }
