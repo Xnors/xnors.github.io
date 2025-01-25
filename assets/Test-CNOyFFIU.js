@@ -1,0 +1,1 @@
+import{c as s,a as o,w as a,u as r,b as t,o as n,R as i}from"./index-hAIUnTyg.js";const u={class:"timeline"},m={__name:"Test",setup(l){return(_,e)=>(n(),s("div",u,[o(r(i),{to:"/"},{default:a(()=>e[0]||(e[0]=[t("返回")])),_:1}),e[1]||(e[1]=t("..!!!!!!!!!!!!!!!!!!! "))]))}};export{m as default};
