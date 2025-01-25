@@ -50,7 +50,7 @@ onUnmounted(() => {
 
 <template>
   <div class="bg" id="box" ref="box">
-    <img src="../assets/xlogo.svg" alt="Xnors!" class="big-logo" id="logo" ref="logo">
+    <img src="../assets/mthicklogo.svg" alt="Xnors!" class="big-logo" id="logo" ref="logo">
   </div>
 </template>
 
@@ -62,13 +62,13 @@ onUnmounted(() => {
   justify-content: center;
   align-items: center;
   background-color: #030303;
-  /* transition: opacity 0.1s linear; */
   border: 1px solid #ffffff0f; 
 }
 
 .big-logo {
   width: calc(15vw + 10vh);
   height: auto;
+  /* filter: invert(100%); */
   /* transition: opacity 0.1s linear, transform 0.1s linear; */
 }
 

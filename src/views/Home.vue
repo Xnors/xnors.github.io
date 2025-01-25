@@ -17,7 +17,7 @@ const { cursor } = useCursor();
     <SideBar style="max-width: 100vw" />
 
     <BigLogo style="position: fixed" />
-    <Empty height_vh="100" />
+    <Empty height_vh="100" style="background-color: #090909;"/>
     <Intro style="z-index: 999" />
     <Members />
     <!-- <section>Hi0</section>
