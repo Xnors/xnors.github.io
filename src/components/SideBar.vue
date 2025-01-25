@@ -7,10 +7,19 @@ import axios from "axios";
 
 let count = ref(0);
 onMounted(() => {
-  axios.get("https://xnors.pythonanywhere.com/get_visit_count").then((res) => {
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+res.data);
-    count.value = res.data;
-  });
+  //无cors跨域请求
+  //   axios.get("https://xnors.pythonanywhere.com/get_visit_count").then((res) => {
+  //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + res.data);
+  //     count.value = res.data;
+  //   });
+  fetch("https://xnors.pythonanywhere.com/get_visit_count")
+    .then((response) => {
+      response.json();
+    })
+    .then((data) => {
+      console.log("!!!!!!!!!!" + data);
+      count.value = data;
+    });
 });
 </script>
 
