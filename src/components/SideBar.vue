@@ -13,13 +13,21 @@ onMounted(() => {
   //     count.value = res.data;
   //   });
   fetch("https://xnors.pythonanywhere.com/get_visit_count")
-    .then((response) => {
-      response.json();
-    })
-    .then((data) => {
-      console.log("!!!!!!!!!!" + data);
-      count.value = data;
-    });
+  .then((response) => {
+    // 检查响应是否成功
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.text(); // 解析响应为文本
+  })
+  .then((data) => {
+    count.value = data; // 将数据赋值给 count.value
+    console.log("Visit Count:", data); // 打印数据以便调试
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error); // 打印错误信息
+    count.value = "Failed to fetch"; // 设置一个默认值或错误提示
+  });
 });
 </script>
 
