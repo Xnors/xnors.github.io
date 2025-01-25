@@ -8,6 +8,7 @@ on:
     branches:
       - main
       - dev
+      - test
   pull_request:
 
   # 这个选项可以使你手动在 Action tab 页面触发工作流

@@ -7,7 +7,7 @@ import axios from "axios";
 
 let count = ref(0);
 onMounted(() => {
-  axios.get("/api/get_visit_count").then((res) => {
+  axios.get("https://xnors.pythonanywhere.com/get_visit_count").then((res) => {
     count.value = res.data;
   });
 });

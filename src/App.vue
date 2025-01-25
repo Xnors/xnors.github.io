@@ -1,5 +1,5 @@
 <script setup>
-fetch("/api/new_visit")
+fetch("https://xnors.pythonanywhere.com/new_visit");
 </script>
 
 <template>
