@@ -1,22 +1,7 @@
 <script setup>
-import BigLogo from './components/BigLogo.vue'
-import Intro from './components/Intro.vue';
-import Empty from './components/Empty.vue';
+fetch("https://xnors.pythonanywhere.com/new_visit");
 </script>
 
 <template>
-
-    <BigLogo style="position: fixed;" />
-    <Empty height_vh="100" />
-    <Intro />
-
+  <router-view></router-view>
 </template>
-
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-</style>

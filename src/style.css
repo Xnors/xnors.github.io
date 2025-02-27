@@ -3,11 +3,18 @@
   padding: 0;
 }
 
-:root {
-  background-color: #121212;
-}
 
 /* 禁用滚动条 */
 body::-webkit-scrollbar {
   display: none;
+}
+
+@font-face {
+  font-family: deyihei;
+  src: url("./assets/font/SmileySans-Oblique.ttf");
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
