@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+:root {
+  scrollbar-width: none;
+}
+
 @font-face {
   font-family: "deyihei";
   src: url("./assets/SmileySans-Oblique.ttf") format("truetype");
@@ -17,9 +21,11 @@
   0% {
     background-position: 100% 0%;
   }
+
   50% {
     background-position: 0% 100%;
   }
+
   100% {
     background-position: 100% 0%;
   }

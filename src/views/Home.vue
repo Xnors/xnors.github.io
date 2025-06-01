@@ -99,10 +99,10 @@ onMounted(() => {
     .add(
       {
         targets: ".links",
-        translateY: ["60vh", 0],
+        translateY: ["30vh", 0],
         opacity: [0, 1],
-        scale: [0.1, 1],
-        duration: 1000,
+        scale: [0, 1],
+        duration: 1200,
         easing: "easeOutExpo",
       },
       "-=1000"
@@ -111,7 +111,7 @@ onMounted(() => {
       {
         targets: ".showenBox",
         opacity: [0, 0.9],
-        duration: 6000,
+        duration: 10000,
         easing: "easeOutExpo",
       },
       "-=3000"
@@ -221,7 +221,7 @@ a {
   color: rgba($color: #fff, $alpha: 0.8);
   font-size: 3vh;
   text-align: center;
-
+  cursor: pointer;
   transition: all 0.4s ease;
 }
 
@@ -236,25 +236,6 @@ a {
   background-color: rgba($color: #fff, $alpha: 0.8);
   width: 0.12vw;
   height: 5vh;
-}
-
-@media screen and (max-width: 768px) {
-  .link-item .splite-line:hover {
-    color: #a31212;
-  }
-
-  .link-item {
-    font-family: "deyihei";
-    color: rgba($color: #fff, $alpha: 0.8);
-    font-size: 2.7vh;
-    margin: 2vw;
-  }
-
-  .splite-line {
-    background-color: rgba($color: #fff, $alpha: 0.8);
-    width: 0.7vw;
-    height: 3.3vh;
-  }
 }
 
 .set-center {
@@ -275,7 +256,39 @@ a {
   max-width: 30%;
   max-height: 30%;
   color: #ffffff;
-
-  // mix-blend-mode: difference
 }
+
+
+@media screen and (max-width: 768px) {
+  .link-item .splite-line:hover {
+    color: #a31212;
+  }
+
+  .link-item {
+    font-family: "deyihei";
+    color: rgba($color: #fff, $alpha: 0.8);
+    font-size: 2.6vh;
+    margin: 2vw;
+  }
+
+  .links{
+    margin-top: 2.6vh;
+  }
+
+  .splite-line {
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    width: 0.7vw;
+    height: 3.3vh;
+  }
+
+  .logo{
+    max-width: 50%;
+    max-height: 50%;
+  }
+
+  .showenBox{
+    font-size: 108%;
+  }
+}
+
 </style>
