@@ -1,22 +1,27 @@
 <script setup>
-import Home from './views/Home.vue'
-import About from './views/About.vue';
+import Home from "./views/Home.vue";
+import About from "./views/About.vue";
+import axios from "axios";
+import { onMounted } from "vue";
+
+const serverApiURL = "http://xnors.pythonanywhere.com/new_visit";
+
+onMounted(() => {
+  axios
+    .get(serverApiURL)
+    .then((response) => {
+      console.log("Add visit status: ", response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 </script>
 
 <template>
   <div class="home">
     <Home />
   </div>
-  <!-- <div class="home2">
-    <About />
-  </div> -->
-
-  <!-- <div class="home">
-    <Home />
-  </div>
-  <div class="home2"> 
-    <Home />
-  </div> -->
 </template>
 
 <style lang="scss">
@@ -34,5 +39,4 @@ import About from './views/About.vue';
   background-color: #fcfcfc;
   height: auto;
 }
-
 </style>

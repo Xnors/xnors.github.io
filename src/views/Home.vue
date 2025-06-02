@@ -33,7 +33,7 @@ class Shower {
 
   static showWait() {
     // showen.value = "xnors-studio@outlook.com";
-    var cc = showSth("正在跳转, 等一下哦, 别急啊! (*/ω＼*)", 42, cc);
+    var cc = showSth("正在跳转, 等一下哦, 别急啊! (*/ω＼*)", 64, cc);
   }
 
   static unshow() {
