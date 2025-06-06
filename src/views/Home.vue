@@ -157,7 +157,7 @@ onMounted(() => {
 
       <a
         class="link-item"
-        href="https://xnors.github.io/xblogs"
+        href="https://xnors.github.io/xblogs/#/xblogs/"
         id="5"
         @click="Shower.showWait()"
         >博客
