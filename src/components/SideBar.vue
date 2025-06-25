@@ -11,11 +11,12 @@
     </label>
     <nav id="menu">
         <a href="https://www.github.com/Xnors">GitHub</a>
-        <a href="https://www.jihulab.com/Xnors">极狐GitLab</a>
-        <a href="#">Magnam.</a>
+        <!-- <a href="https://www.jihulab.com/Xnors">极狐GitLab</a> -->
+         <a href="https://xnors.github.io/xblogs">异或博客/XBlogs</a>
+        <!-- <a href="#">Magnam.</a>
         <a href="#">Ipsum.</a>
         <a href="#">Voluptatem.</a>
-        <a href="#">Quibusdam.</a>
+        <a href="#">Quibusdam.</a> -->
     </nav>
 </template>
 

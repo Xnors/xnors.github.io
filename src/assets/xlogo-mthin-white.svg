@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="236.951171875" height="262.9375" viewBox="0 0 236.951171875 262.9375" fill="none">
+<path d="M210.464 0.468262L0.974121 262.469L25.4741 262.469L235.974 0.468262L210.464 0.468262Z" stroke="url(#linear_border_22_2)" stroke-width="0.9366187141445207"      fill="#FFFFFF" fill-opacity="100">
+</path>
+<path d="M36.02 47.7278L169.74 47.4678L154.97 64.9678L55.97 64.9678L55.97 143.268L36.02 143.268L36.02 47.7278Z" stroke="url(#linear_border_22_4)" stroke-width="0.9366187141445207"      fill="#FFFFFF" fill-opacity="100">
+</path>
+<path d="M31.9738 160.453C31.9738 152.177 38.6833 145.467 46.9598 145.467C55.2363 145.467 61.9458 152.177 61.9458 160.453C61.9458 168.73 55.2363 175.439 46.9598 175.439C38.6833 175.439 31.9738 168.73 31.9738 160.453Z" stroke="rgba(255, 255, 255, 1)" stroke-width="12"   >
+</path>
+<path d="M201.694 213.179L67.9739 213.439L82.7439 195.939L181.744 195.939L181.744 117.639L201.694 117.639L201.694 213.179Z" stroke="url(#linear_border_22_10)" stroke-width="0.9366187141445207"      fill="#FFFFFF" fill-opacity="100">
+</path>
+<path d="M206.946 100.454C206.946 108.73 200.237 115.44 191.96 115.44C183.684 115.44 176.974 108.73 176.974 100.454C176.974 92.1773 183.684 85.4678 191.96 85.4678C200.237 85.4678 206.946 92.1773 206.946 100.454Z" stroke="rgba(255, 255, 255, 1)" stroke-width="12"   >
+</path>
+<defs>
+<linearGradient id="linear_border_22_2" x1="0.97412109375" y1="131.46875" x2="235.97412109375" y2="131.46875" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#BAC8E8"  />
+<stop offset="0.4723" stop-color="#C9B7ED" stop-opacity="0.57" />
+<stop offset="1" stop-color="#000000"  />
+</linearGradient>
+<linearGradient id="linear_border_22_4" x1="36.02001953125" y1="95.367919921875" x2="169.73974609375" y2="95.367919921875" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#BAC8E8"  />
+<stop offset="0.4723" stop-color="#C9B7ED" stop-opacity="0.57" />
+<stop offset="1" stop-color="#000000"  />
+</linearGradient>
+<linearGradient id="linear_border_22_10" x1="201.69384765625" y1="165.539306640625" x2="67.97412109375" y2="165.539306640625" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#BAC8E8"  />
+<stop offset="0.4723" stop-color="#C9B7ED" stop-opacity="0.57" />
+<stop offset="1" stop-color="#000000"  />
+</linearGradient>
+</defs>
+</svg>

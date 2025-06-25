@@ -50,7 +50,7 @@ onUnmounted(() => {
 
 <template>
   <div class="bg" id="box" ref="box">
-    <img src="../assets/xlogo.svg" alt="Xnors!" class="big-logo" id="logo" ref="logo">
+    <img src="../assets/xlogo-mthin-white.svg" alt="Xnors!" class="big-logo" id="logo" ref="logo">
   </div>
 </template>
 
@@ -61,7 +61,8 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #030303;
+  /* background-color: #1f1f1f; */
+  background-image: linear-gradient(to bottom, #030303 80%, #0a0a0a6c,#1d1d1d)
   /* transition: opacity 0.1s linear; */
 }
 
