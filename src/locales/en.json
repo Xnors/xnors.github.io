@@ -1,0 +1,17 @@
+{
+    "nav": {
+        "language": "English",
+        "checkout": "切换成中文",
+        "blog":"XBlogs"
+    },
+    "intro": {
+        "i1": {
+            "_1": "Hey there! This is ",
+            "_2": "Xnors Studio",
+            "_3": "!"
+        },
+        "i2": "We are a vibrant technology development studio",
+        "i3": "dedicated to creating some",
+        "i4": "\"interesting things\""
+    }
+}

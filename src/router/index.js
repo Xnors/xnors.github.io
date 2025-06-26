@@ -15,6 +15,16 @@ export default new Router({
             path: '/:pathMatch(.*)*',
             name: 'NotFound',
             component: () => { import('@/views/Timeline.vue') }
+        },{
+            path:"en",
+            name:"en",
+            children:[
+                {
+                    path:"/",
+                    name:"Home",
+                    component:()=>import("@/views/Home.vue")
+                }
+            ]
         }
     ]
 })
