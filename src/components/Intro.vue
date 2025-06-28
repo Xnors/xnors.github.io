@@ -10,10 +10,10 @@ let intro3 = ref(null);
 let intro4 = ref(null);
 
 onMounted(() => {
-  gsap.set(intro1.value, { x: -300, opacity: 0 });
-  gsap.set(intro2.value, { x: 300, opacity: 0 });
-  gsap.set(intro3.value, { x: -300, opacity: 0 });
-  gsap.set(intro4.value, { x: 300, opacity: 0 });
+  gsap.set(intro1.value, { x: -50, opacity: 0 });
+  gsap.set(intro2.value, { x: 50, opacity: 0 });
+  gsap.set(intro3.value, { x: -50, opacity: 0 });
+  gsap.set(intro4.value, { x: 50, opacity: 0 });
 
   // 监听滚动条,当超过 50vh时
   window.addEventListener("scroll", () => {

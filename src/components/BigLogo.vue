@@ -28,7 +28,7 @@ function handleScroll() {
 
   // Logo 动画
   const logoOpacity = 1 - progress;
-  const logoScale = 1 + progress * 1.14;
+  const logoScale = 1 + progress * 1.5;
   const logoRotation = progress * 180; // 从 0 到 180 度
 
   logo.value.style.opacity = logoOpacity;
