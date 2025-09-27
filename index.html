@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xnors Studio - 求同存异</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1a1a1a;
+        --bg-card: #0f0f0f;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --accent-primary: #00d4ff;
+        --accent-secondary: #7c3aed;
+        --border-color: #2a2a2a;
+        --hover-glow: rgba(0, 212, 255, 0.3);
+      }
+
+      [data-theme="light"] {
+        --bg-primary: #f5f5f5;
+        --bg-secondary: #ffffff;
+        --bg-card: #ffffff;
+        --text-primary: #0a0a0a;
+        --text-secondary: #666666;
+        --accent-primary: #0066cc;
+        --accent-secondary: #7c3aed;
+        --border-color: #e0e0e0;
+        --hover-glow: rgba(0, 102, 204, 0.2);
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+        transition: all 0.3s ease;
+      }
+
+      /* 导航栏 */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      [data-theme="light"] nav {
+        background: rgba(245, 245, 245, 0.9);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-primary);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* 主容器 */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* 首屏 */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          var(--accent-primary) 0%,
+          transparent 70%
+        );
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(100px, -100px) scale(1.1);
+        }
+        66% {
+          transform: translate(-100px, 100px) scale(0.9);
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 1;
+      }
+
+      .xnors-logo {
+        font-size: 5rem;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+
+      @keyframes glitch {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+      }
+
+      .core-services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .service-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 30px var(--hover-glow);
+      }
+
+      .service-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .service-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* 服务区 */
+      .services {
+        padding: 5rem 0;
+        background: var(--bg-secondary);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-detail-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .service-detail-card:hover {
+        transform: scale(1.02);
+        border-color: var(--accent-primary);
+      }
+
+      .service-detail-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-tag {
+        font-family: "Courier New", monospace;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        color: var(--accent-primary);
+      }
+
+      /* 团队区 */
+      .team {
+        padding: 5rem 0;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .team-member {
+        text-align: center;
+        padding: 2rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+      }
+
+      .member-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+        & > img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover; /* 保持比例，裁剪多余部分 */
+          border: 2px solid #cccccccc;
+        }
+      }
+
+      .member-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .member-role {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      /* 联系区 */
+      .contact {
+        padding: 5rem 0;
+        background: var(--bg-secondary);
+        text-align: center;
+      }
+
+      .contact-methods {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-method {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .contact-icon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px var(--hover-glow);
+      }
+
+      .contact-label {
+        color: var(--text-secondary);
+      }
+
+      /* 页脚 */
+      footer {
+        padding: 2rem 0;
+        background: var(--bg-primary);
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .copyright {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background: var(--accent-primary);
+        color: white;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .xnors-logo {
+          font-size: 3rem;
+        }
+
+        .hero-content {
+          padding: 0 1rem;
+        }
+
+        .core-services {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid,
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-methods {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      /* 滚动动画 */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo">Xnors Studio</div>
+        <ul class="nav-links">
+          <li><a href="#services">服务</a></li>
+          <li><a href="#team">团队</a></li>
+          <li><a href="#contact">联系</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 首屏 -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="xnors-logo">异或 · 工作室</h1>
+        <p class="tagline">求同存异</p>
+      </div>
+    </section>
+
+    <!-- 服务区 -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title fade-in">我们的服务</h2>
+        <div class="services-grid">
+          <div class="service-detail-card fade-in">
+            <div class="service-detail-icon">🕷️</div>
+            <h3>爬虫开发</h3>
+            <p>
+              定制化爬虫解决方案，支持反爬虫策略，高效稳定地采集各类网站数据。
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scrapy</span>
+              <span class="tech-tag">Selenium</span>
+            </div>
+          </div>
+          <div class="service-detail-card fade-in">
+            <div class="service-detail-icon">📊</div>
+            <h3>数据分析</h3>
+            <p>从原始数据中提取有价值的信息，提供可视化报告和决策支持。</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Matplotlib</span>
+            </div>
+          </div>
+          <div class="service-detail-card fade-in">
+            <div class="service-detail-icon">🌐</div>
+            <h3>网页制作</h3>
+            <p>响应式网站设计，注重用户体验，打造现代化的网络形象。</p>
+            <div class="tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="service-detail-card fade-in">
+            <div class="service-detail-icon">⚙️</div>
+            <h3>后端开发</h3>
+            <p>构建高性能、可扩展的服务器架构，确保系统稳定运行。</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 团队区 -->
+    <section class="team" id="team">
+      <div class="container">
+        <h2 class="section-title fade-in">我们的团队</h2>
+        <div class="team-grid">
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/fexcode.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">Fexcode</h3>
+            <p class="member-role">爬虫数据收集与数据分析员/后端工程师</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/skymaozi.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">SkyMaoZi</h3>
+            <p class="member-role">全栈工程师</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/codeseed.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">CodeSeed</h3>
+            <p class="member-role">测试工程师</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/xmtm.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">xm</h3>
+            <p class="member-role">爬虫与数据分析员</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/Justwoofus.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">Justthewoofus</h3>
+            <p class="member-role">底层开发工程师</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/Narci.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">Narci</h3>
+            <p class="member-role">后端工程师</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+          <div class="team-member fade-in">
+            <div class="member-avatar">
+              <img
+                src="./imgs/baichuanbyte.jpg"
+                alt="Team Member"
+                width="100"
+                height="100"
+              />
+            </div>
+            <h3 class="member-name">BaiChuanByte</h3>
+            <p class="member-role">室长/策划/吉祥物</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📧</a>
+              <a href="#" class="social-link">💼</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系区 -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title fade-in">联系我们</h2>
+        <div class="contact-methods">
+          <div class="contact-method fade-in">
+            <div
+              class="contact-icon"
+              onclick="copyToClipboard('xnors-studio@outlook.com', '邮箱已复制到剪贴板:\nxnors-studio@outlook.com')"
+            >
+              📧
+            </div>
+            <p class="contact-label">邮箱联系</p>
+          </div>
+          <div class="contact-method fade-in">
+            <div
+              class="contact-icon"
+              onclick="window.open('https://github.com/xnors', '_blank')"
+            >
+              💻
+            </div>
+            <p class="contact-label">GitHub</p>
+          </div>
+          <div class="contact-method fade-in">
+            <div
+              class="contact-icon"
+              onclick="copyToClipboard('2734664632', 'QQ号已复制到剪贴板:\n2734664632')"
+            >
+              💬
+            </div>
+            <p class="contact-label">QQ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <div class="footer-content">
+        <p class="copyright">© 2024 Xnors Studio. All rights reserved.</p>
+        <div class="theme-toggle" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 主题切换
+      function toggleTheme() {
+        const html = document.documentElement;
+        const themeIcon = document.getElementById("theme-icon");
+
+        if (html.getAttribute("data-theme") === "light") {
+          html.removeAttribute("data-theme");
+          themeIcon.textContent = "🌙";
+        } else {
+          html.setAttribute("data-theme", "light");
+          themeIcon.textContent = "☀️";
+        }
+      }
+
+      // 复制邮箱到剪贴板
+      function copyToClipboard(text, ctt) {
+        navigator.clipboard.writeText(text).then(() => {
+          // 创建提示元素
+          const toast = document.createElement("div");
+          toast.textContent = ctt;
+          toast.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #4caf5080;
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 8px;
+                    z-index: 9999;
+                    animation: slideUp 0.3s ease;
+                `;
+          document.body.appendChild(toast);
+
+          setTimeout(() => {
+            toast.remove();
+          }, 3000);
+        });
+      }
+
+      // 滚动动画
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // 导航栏滚动效果
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          nav.style.background = "rgba(10, 10, 10, 0.95)";
+          nav.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+        } else {
+          nav.style.background = "rgba(10, 10, 10, 0.9)";
+          nav.style.boxShadow = "none";
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // 添加CSS动画
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes slideUp {
+                from {
+                    transform: translate(-50%, 100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translate(-50%, 0);
+                    opacity: 1;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
