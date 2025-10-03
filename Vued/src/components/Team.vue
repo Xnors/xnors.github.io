@@ -76,8 +76,9 @@
             <h3 class="member-name">Justthewoofus</h3>
             <p class="member-role">底层开发工程师</p>
             <div class="social-links">
-              <a href="memberpages/Justtowofus.html" class="social-link">📧</a>
-              <a href="memberpages/Justtowofus.html" class="social-link">💼</a>
+
+              <router-link to="justwoofus" class="social-link">📧</router-link>
+              <router-link to="justwoofus" class="social-link">💼</router-link>
             </div>
           </div>
           <div class="team-member fade-in">
