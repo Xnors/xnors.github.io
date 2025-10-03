@@ -3,7 +3,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(10, 10, 10, 0.1);
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 1rem 0;
@@ -11,7 +11,7 @@ nav {
 }
 
 [data-theme="light"] nav {
-  background: rgba(245, 245, 245, 0.9);
+  background: rgba(245, 245, 245, 0.1);
 }
 
 .nav-container {
@@ -26,12 +26,10 @@ nav {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  -webkit-background-clip: text;
+  background: linear-gradient(135deg,
+      var(--accent-primary),
+      var(--accent-secondary));
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   cursor: pointer;
 }

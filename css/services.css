@@ -19,11 +19,9 @@
   transform: translateX(-50%);
   width: 50px;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
+  background: linear-gradient(90deg,
+      var(--accent-primary),
+      var(--accent-secondary));
 }
 
 .services-grid {
@@ -49,11 +47,9 @@
 .service-detail-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
+  background: linear-gradient(135deg,
+      var(--accent-primary),
+      var(--accent-secondary));
   border-radius: 12px;
   display: flex;
   align-items: center;

@@ -29,11 +29,9 @@
   height: 100px;
   border-radius: 50%;
   margin: 0 auto 1rem;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
+  background: linear-gradient(135deg,
+      var(--accent-primary),
+      var(--accent-secondary));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,11 +39,12 @@
   color: white;
 }
 
-.member-avatar > img {
+.member-avatar>img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  object-fit: cover; /* 保持比例，裁剪多余部分 */
+  object-fit: cover;
+  /* 保持比例，裁剪多余部分 */
   border: 2px solid #cccccccc;
 }
 
