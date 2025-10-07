@@ -21,7 +21,7 @@ const submit = () => {
         password: password.value
     };
 
-    fetch('http://127.0.0.1:8000/api/login/', {
+    fetch('http://xnors.pythonanywhere.com/api/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const submit = () => {
         .then(data => {
             localStorage.setItem('accessToken', data.access);
             localStorage.setItem('refreshToken', data.refresh);
-            
+
             errorMsg.value = "";
             successMsg.value = "登录成功！即将跳转到主页...";
             setTimeout(() => {

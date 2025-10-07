@@ -15,7 +15,7 @@ async function refreshAccessToken() {
     }
 
     try {
-        const response = await axios.post('https://127.0.0.1:8000/api/token/refresh/', { refresh: refreshToken });
+        const response = await axios.post('http://xnors.pythonanywhere.com/api/token/refresh/', { refresh: refreshToken });
         localStorage.setItem('accessToken', response.data.access);
         return true;
     } catch (error) {
@@ -50,7 +50,7 @@ const checkLoginStatus = async () => {
 
     try {
         const response = await apiClient.get('/islogin/');
-        console.log("+++++++++++++++++++++++++++"+response.data);  
+        console.log("+++++++++++++++++++++++++++" + response.data);
         if (response.data.is_login) {
             return true;
         } else {
