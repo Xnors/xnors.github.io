@@ -1,18 +1,40 @@
 <template>
-    <!-- 导航栏 -->
-    <nav>
-      <div class="nav-container">
-        <div class="logo">Xnors Studio</div>
-        <ul class="nav-links">
-          <li><a href="#services">服务</a></li>
-          <li><a href="#team">团队</a></li>
-          <li><a href="#contact">联系</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- 导航栏 -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Xnors Studio</div>
+      <ul class="nav-links">
+        <li><a href="#services">服务</a></li>
+        <li><a href="#team">团队</a></li>
+        <li><a href="#contact">联系</a></li>
+        <li v-if="!islogin"><router-link to="login">注册/登录</router-link></li>
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script setup>
+import { onMounted, ref } from "vue";
+import { checkLoginStatus } from "../scripts/main.js";
+import apiClient from "../scripts/client.js"
+
+let islogin = ref(false);
+
+onMounted(async () => {
+  islogin.value = await checkLoginStatus();
+  if (islogin.value) {
+    console.log("用户已登录");
+    apiClient.get("/space/")
+      .then((response) => {
+        console.log("用户信息: ",response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  } else {
+    console.log("用户未登录");
+  }
+});
 
 // 导航栏滚动效果
 let lastScroll = 0;
