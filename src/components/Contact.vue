@@ -118,7 +118,7 @@ const deleteMessage = async (messageId) => {
 
   try {
     // 使用导入的apiClient
-    const response = await apiClient.delete('/messagebord/', {
+    const response = await apiClient.delete('messagebord/', {
       data: { user_message_id: messageId }  // 注意：DELETE请求通常使用data而不是params
     });
 
