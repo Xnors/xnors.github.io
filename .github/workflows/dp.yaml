@@ -42,6 +42,9 @@ jobs:
       - name: 打包 🔧
         run: npm run build
 
+      - name: 添加.nojekyll文件到打包目录
+        run: touch dist/.nojekyll
+
       # 部署 https://github.com/JamesIves/github-pages-deploy-action
       - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4

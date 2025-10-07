@@ -48,7 +48,7 @@ const submit = () => {
         password: password.value
     };
 
-    fetch('http://xnors.pythonanywhere.com/api/signup/', {
+    fetch('https://xnors.pythonanywhere.com/api/signup/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

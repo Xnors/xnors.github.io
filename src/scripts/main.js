@@ -15,7 +15,7 @@ async function refreshAccessToken() {
     }
 
     try {
-        const response = await axios.post('http://xnors.pythonanywhere.com/api/token/refresh/', { refresh: refreshToken });
+        const response = await axios.post('https://xnors.pythonanywhere.com/api/token/refresh/', { refresh: refreshToken });
         localStorage.setItem('accessToken', response.data.access);
         return true;
     } catch (error) {

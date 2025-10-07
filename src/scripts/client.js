@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'http://xnors.pythonanywhere.com/api',
+    baseURL: 'https://xnors.pythonanywhere.com/api',
 });
 
 apiClient.interceptors.request.use(config => {
