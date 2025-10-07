@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import apiClient from '../scripts/client.js';
 
 const errorMsg = ref("");
 const successMsg = ref(""); // 新增成功消息状态
@@ -48,30 +49,25 @@ const submit = () => {
         password: password.value
     };
 
-    fetch('https://xnors.pythonanywhere.com/api/signup/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data2post)
-    })
+    apiClient.post('signup/', data2post)
         .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.error || '注册失败');
-                });
-            }
-            return response.json().then(data => data);
-        })
-        .then(data => {
             errorMsg.value = ""; // 清空错误信息
-            successMsg.value = "注册成功！即将跳转到登录页面..."; // 显示成功消息
-            setTimeout(() => {
-                router.push('/login'); // 跳转到 login 路由
-            }, 1000);
+            if (response.status === 200) {
+                successMsg.value = "注册成功！即将跳转到登录页面..."; // 显示成功消息
+                setTimeout(() => {
+                    router.push('/login'); // 跳转到 login 路由
+                }, 1000);
+            }
+            else {
+                errorMsg.value = response.data.error || '注册失败';
+            }
         })
         .catch(error => {
-            errorMsg.value = error.message;
+            if (error.response && error.response.status != 200) {
+                errorMsg.value = error.response.data.error || '注册失败';
+            } else {
+                errorMsg.value = "啊?"
+            }
             successMsg.value = ""; // 清空成功消息
         });
 };

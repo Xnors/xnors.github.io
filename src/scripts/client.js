@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { SERVER_URL } from './consts.js';
 
 const apiClient = axios.create({
-    baseURL: 'https://xnors.pythonanywhere.com/api',
+    baseURL: SERVER_URL + '/api',
 });
 
 apiClient.interceptors.request.use(config => {

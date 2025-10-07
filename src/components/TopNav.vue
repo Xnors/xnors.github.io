@@ -26,7 +26,7 @@ onMounted(async () => {
     console.log("用户已登录");
     apiClient.get("/space/")
       .then((response) => {
-        console.log("用户信息: ",response.data);
+        console.log("用户信息: ", response.data);
       })
       .catch((error) => {
         console.log(error);

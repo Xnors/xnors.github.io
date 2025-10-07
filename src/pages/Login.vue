@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import apiClient from '../scripts/client';
 
 const errorMsg = ref("");
 const successMsg = ref("");
@@ -21,21 +22,7 @@ const submit = () => {
         password: password.value
     };
 
-    fetch('https://xnors.pythonanywhere.com/api/login/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data2post)
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.error || '登录失败');
-                });
-            }
-            return response.json().then(data => data);
-        })
+    apiClient.post('/login/', data2post)
         .then(data => {
             localStorage.setItem('accessToken', data.access);
             localStorage.setItem('refreshToken', data.refresh);
@@ -47,7 +34,7 @@ const submit = () => {
             }, 1000);
         })
         .catch(error => {
-            errorMsg.value = error.message;
+            errorMsg.value = error.response?.data?.error || error.message || '登录失败';
             successMsg.value = "";
         });
 };
