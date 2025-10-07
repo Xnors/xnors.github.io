@@ -9,7 +9,6 @@ const username = ref(''); // 替换 email
 const password = ref('');
 
 const router = useRouter();
-
 const submit = () => {
     if (!username.value || !password.value) {
         errorMsg.value = "用户名和密码不能为空";
@@ -23,21 +22,30 @@ const submit = () => {
     };
 
     apiClient.post('/login/', data2post)
-        .then(data => {
-            localStorage.setItem('accessToken', data.access);
-            localStorage.setItem('refreshToken', data.refresh);
+        .then(response => {
+            // 确保response中包含access和refresh token
+            if (response.data.access && response.data.refresh) {
+                localStorage.setItem('accessToken', response.data.access);
+                localStorage.setItem('refreshToken', response.data.refresh);
 
-            errorMsg.value = "";
-            successMsg.value = "登录成功！即将跳转到主页...";
-            setTimeout(() => {
-                router.push('/home');
-            }, 1000);
+                errorMsg.value = "";
+                successMsg.value = "登录成功！即将跳转到主页...";
+                
+                // 延迟跳转，让用户看到成功消息
+                setTimeout(() => {
+                    router.push('/home');
+                }, 1000);
+            } else {
+                errorMsg.value = "登录响应中缺少token信息";
+                successMsg.value = "";
+            }
         })
         .catch(error => {
             errorMsg.value = error.response?.data?.error || error.message || '登录失败';
             successMsg.value = "";
         });
 };
+
 </script>
 
 <template>

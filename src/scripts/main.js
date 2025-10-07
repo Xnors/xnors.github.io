@@ -1,5 +1,5 @@
 import apiClient from "./client";
-import axios from "axios"; // 确保 axios 被正确导入
+
 
 /**
  * 刷新访问令牌。
@@ -10,29 +10,22 @@ import axios from "axios"; // 确保 axios 被正确导入
 async function refreshAccessToken() {
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
-        // redirectToLogin();
         return false;
     }
 
     try {
-        const response = await axios.post('https://127.0.0.1:8000/api/token/refresh/', { refresh: refreshToken });
-        localStorage.setItem('accessToken', response.data.access);
-        return true;
+        // 使用apiClient而不是直接使用axios，确保基础URL一致
+        const response = await apiClient.post('/token/refresh/', { refresh: refreshToken });
+        if (response.data.access) {
+            localStorage.setItem('accessToken', response.data.access);
+            return true;
+        }
+        return false;
     } catch (error) {
         console.error('刷新 Token 失败', error);
         clearAuthData();
-        // redirectToLogin();
         return false;
     }
-}
-
-/**
- * 清除本地存储中的认证数据。
- * 删除访问令牌和刷新令牌。
- */
-function clearAuthData() {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
 }
 
 /**
@@ -44,27 +37,34 @@ function clearAuthData() {
 const checkLoginStatus = async () => {
     const token = localStorage.getItem('accessToken');
     if (!token) {
-        // redirectToLogin();
         return false;
     }
 
     try {
         const response = await apiClient.get('/islogin/');
-        console.log("+++++++++++++++++++++++++++" + response.data);
-        if (response.data.is_login) {
-            return true;
-        } else {
-            clearAuthData();
-            return false;
-        }
+        return response.data.is_login === true;
     } catch (error) {
         console.error('登录状态检查失败', error);
-        const refreshed = await refreshAccessToken();
-        if (refreshed) {
-            return await checkLoginStatus(); // 重新检查登录状态
+
+        // 如果是401错误，尝试刷新token
+        if (error.response && error.response.status === 401) {
+            const refreshed = await refreshAccessToken();
+            if (refreshed) {
+                // 使用新的token重新检查登录状态
+                try {
+                    const response = await apiClient.get('/islogin/');
+                    return response.data.is_login === true;
+                } catch (retryError) {
+                    console.error('重试登录状态检查失败', retryError);
+                    clearAuthData();
+                    return false;
+                }
+            }
         }
+
+        clearAuthData();
         return false;
     }
 };
 
-export { checkLoginStatus };
+export { checkLoginStatus }
