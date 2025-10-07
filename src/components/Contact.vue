@@ -134,7 +134,6 @@ const deleteMessage = async (messageId) => {
 
 onMounted(() => {
   fetchMessages()
-  setInterval(fetchMessages, 5000);  // 每5秒刷新一次留言列表
 })
 </script>
 
