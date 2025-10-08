@@ -1,3 +1,83 @@
+<script setup>
+import apiClient from '../scripts/client.js';
+import { onMounted, ref } from "vue"
+
+// 响应式状态
+const newMessage = ref('');
+const messages = ref([]);
+const isSubmitting = ref(false);
+
+// 获取留言数据
+const fetchMessages = async () => {
+  try {
+    // 使用导入的apiClient，不需要再手动添加Authorization头
+    const response = await apiClient.get('/messagebord/');
+
+    if (response.data) {
+      // 假设返回的数据包含用户信息和留言列表
+      // 这里需要根据实际API返回的数据结构进行调整
+      messages.value = response.data.messages || [];
+    }
+  } catch (error) {
+    console.error('获取留言失败:', error);
+  }
+};
+
+// 提交留言
+const submitMessage = async () => {
+  if (newMessage.value.length <= 10 || newMessage.value.length > 512) {
+    alert('留言内容长度必须在10到512个字符之间');
+    return;
+  }
+
+  isSubmitting.value = true;
+  try {
+    // 使用导入的apiClient
+    const response = await apiClient.post('/messagebord/', {
+      content: newMessage.value
+    });
+
+    if (response.data) {
+      // 提交成功后清空输入框并刷新留言列表
+      newMessage.value = '';
+      fetchMessages();
+    }
+  } catch (error) {
+    console.error('提交留言失败:', error);
+    alert(error.response?.data?.message || '提交留言失败，请稍后重试');
+  } finally {
+    isSubmitting.value = false;
+  }
+};
+
+// 删除留言
+const deleteMessage = async (messageId) => {
+  if (!confirm('确定要删除这条留言吗？')) {
+    return;
+  }
+
+  try {
+    // 使用导入的apiClient
+    const response = await apiClient.delete('messagebord/', {
+      data: { user_message_id: messageId }  // 注意：DELETE请求通常使用data而不是params
+    });
+
+    if (response.data) {
+      // 删除成功后刷新留言列表
+      fetchMessages();
+    }
+  } catch (error) {
+    console.error('删除留言失败:', error);
+    alert('删除留言失败，请稍后重试');
+  }
+};
+
+onMounted(() => {
+  fetchMessages()
+})
+</script>
+
+
 <template>
   <!-- 联系区 -->
   <section class="contact" id="contact">
@@ -7,14 +87,15 @@
       <!-- 留言板区域 -->
       <div class="message-board fade-in">
         <div class="message-input-container">
-          <textarea v-model="newMessage" class="message-input" placeholder="输入你的留言 (10-127个字符)"
-            maxlength="127"></textarea>
+          <textarea v-model="newMessage" class="message-input" placeholder="输入你的留言 (10-512个字符)"
+            maxlength="512"></textarea>
           <div class="message-input-footer">
-            <span class="char-count">{{ newMessage.length }}/127</span>
-            <button @click="submitMessage" class="submit-btn"
-              :disabled="isSubmitting || newMessage.length <= 10 || newMessage.length > 127">
-              {{ isSubmitting ? '提交中...' : '提交留言' }}
-            </button>
+            <span class="char-count">{{ newMessage.length }}/512</span>
+            <span class="char-count">{{ newMessage.length < 10 ? '多写一点呗~' : '' }}</span>
+                <button @click="submitMessage" class="submit-btn"
+                  :disabled="isSubmitting || newMessage.length <= 10 || newMessage.length > 512">
+                  {{ isSubmitting ? '提交中...' : '提交留言' }}
+                </button>
           </div>
         </div>
 
@@ -57,85 +138,6 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import apiClient from '../scripts/client.js';
-import { onMounted, ref } from "vue"
-
-// 响应式状态
-const newMessage = ref('');
-const messages = ref([]);
-const isSubmitting = ref(false);
-
-// 获取留言数据
-const fetchMessages = async () => {
-  try {
-    // 使用导入的apiClient，不需要再手动添加Authorization头
-    const response = await apiClient.get('/messagebord/');
-
-    if (response.data) {
-      // 假设返回的数据包含用户信息和留言列表
-      // 这里需要根据实际API返回的数据结构进行调整
-      messages.value = response.data.messages || [];
-    }
-  } catch (error) {
-    console.error('获取留言失败:', error);
-  }
-};
-
-// 提交留言
-const submitMessage = async () => {
-  if (newMessage.value.length <= 10 || newMessage.value.length > 127) {
-    alert('留言内容长度必须在10到127个字符之间');
-    return;
-  }
-
-  isSubmitting.value = true;
-  try {
-    // 使用导入的apiClient
-    const response = await apiClient.post('/messagebord/', {
-      content: newMessage.value
-    });
-
-    if (response.data) {
-      // 提交成功后清空输入框并刷新留言列表
-      newMessage.value = '';
-      fetchMessages();
-    }
-  } catch (error) {
-    console.error('提交留言失败:', error);
-    alert(error.response?.data?.error || '提交留言失败，请稍后重试');
-  } finally {
-    isSubmitting.value = false;
-  }
-};
-
-// 删除留言
-const deleteMessage = async (messageId) => {
-  if (!confirm('确定要删除这条留言吗？')) {
-    return;
-  }
-
-  try {
-    // 使用导入的apiClient
-    const response = await apiClient.delete('messagebord/', {
-      data: { user_message_id: messageId }  // 注意：DELETE请求通常使用data而不是params
-    });
-
-    if (response.data) {
-      // 删除成功后刷新留言列表
-      fetchMessages();
-    }
-  } catch (error) {
-    console.error('删除留言失败:', error);
-    alert('删除留言失败，请稍后重试');
-  }
-};
-
-onMounted(() => {
-  fetchMessages()
-})
-</script>
 
 <style>
 /* 联系区 */

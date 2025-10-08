@@ -1,121 +1,96 @@
-<template>
-    
-    <!-- 团队区 -->
-    <section class="team" id="team">
-      <div class="container">
-        <h2 class="section-title fade-in">我们的团队</h2>
-        <div class="team-grid">
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/fexcode.jpg"
-                alt="Fexcode"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">Fexcode</h3>
-            <p class="member-role">爬虫数据收集与数据分析员/后端工程师</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
-          </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/skymaozi.jpg"
-                alt="SkyMaoZi"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">SkyMaoZi</h3>
-            <p class="member-role">全栈工程师</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
-          </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/codeseed.jpg"
-                alt="CodeSeed"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">CodeSeed</h3>
-            <p class="member-role">测试工程师</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
-          </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img src="../assets/imgs/xmtm.jpg" alt="xm" width="100" height="100" />
-            </div>
-            <h3 class="member-name">xm</h3>
-            <p class="member-role">爬虫与数据分析员</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
-          </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/Justwoofus.jpg"
-                alt="Justthewoofus"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">Justthewoofus</h3>
-            <p class="member-role">底层开发工程师</p>
-            <div class="social-links">
+<script setup>
+import "sober"
+</script>
 
-              <router-link to="justwoofus" class="social-link">📧</router-link>
-              <router-link to="justwoofus" class="social-link">💼</router-link>
-            </div>
+
+<template>
+
+  <!-- 团队区 -->
+  <section class="team" id="team">
+    <div class="container">
+      <h2 class="section-title fade-in">我们的团队</h2>
+      <div class="team-grid">
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/fexcode.jpg" alt="Fexcode" width="100" height="100" />
           </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/Narci.jpg"
-                alt="Narci"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">Narci</h3>
-            <p class="member-role">后端工程师</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
+          <h3 class="member-name">Fexcode</h3>
+          <p class="member-role">爬虫数据收集与数据分析员/后端工程师</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
           </div>
-          <div class="team-member fade-in">
-            <div class="member-avatar">
-              <img
-                src="../assets/imgs/baichuanbyte.jpg"
-                alt="BaiChuanByte"
-                width="100"
-                height="100"
-              />
-            </div>
-            <h3 class="member-name">BaiChuanByte</h3>
-            <p class="member-role">室长/策划/吉祥物</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📧</a>
-              <a href="#" class="social-link">💼</a>
-            </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/skymaozi.jpg" alt="SkyMaoZi" width="100" height="100" />
           </div>
-        </div>
+          <h3 class="member-name">SkyMaoZi</h3>
+          <p class="member-role">全栈工程师</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/codeseed.jpg" alt="CodeSeed" width="100" height="100" />
+          </div>
+          <h3 class="member-name">CodeSeed</h3>
+          <p class="member-role">测试工程师</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/xmtm.jpg" alt="xm" width="100" height="100" />
+          </div>
+          <h3 class="member-name">xm</h3>
+          <p class="member-role">爬虫与数据分析员</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/Justwoofus.jpg" alt="Justthewoofus" width="100" height="100" />
+          </div>
+          <h3 class="member-name">Justthewoofus</h3>
+          <p class="member-role">底层开发工程师</p>
+          <div class="social-links">
+
+            <router-link to="justwoofus" class="social-link">📧</router-link>
+            <router-link to="justwoofus" class="social-link">💼</router-link>
+          </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/Narci.jpg" alt="Narci" width="100" height="100" />
+          </div>
+          <h3 class="member-name">Narci</h3>
+          <p class="member-role">后端工程师</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </s-ripple>
+        <s-ripple class="team-member fade-in">
+          <div class="member-avatar">
+            <img src="../assets/imgs/baichuanbyte.jpg" alt="BaiChuanByte" width="100" height="100" />
+          </div>
+          <h3 class="member-name">BaiChuanByte</h3>
+          <p class="member-role">室长/策划/吉祥物</p>
+          <div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💼</a>
+          </div>
+        </s-ripple>
       </div>
-    </section>
+    </div>
+  </section>
 
 </template>
 
