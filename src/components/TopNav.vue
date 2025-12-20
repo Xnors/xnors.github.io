@@ -15,13 +15,13 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-import { checkLoginStatus } from "../scripts/main.js";
+import logined from "../scripts/main.js";
 import apiClient from "../scripts/client.js"
 
 let islogin = ref(false);
 
-onMounted(async () => {
-  islogin.value = await checkLoginStatus();
+onMounted(() => {
+  islogin.value = logined();
   if (islogin.value) {
     console.log("用户已登录");
     apiClient.get("/space/")
