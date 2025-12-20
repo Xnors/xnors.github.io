@@ -10,6 +10,8 @@ const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 
+var alreadysend = false; // 新增成功消息状态
+
 const router = useRouter(); // 使用 Vue Router
 
 const checkPasswdCanBeUsed = () => {
@@ -49,27 +51,35 @@ const submit = () => {
         password: password.value
     };
 
-    apiClient.post('signup/', data2post)
-        .then(response => {
-            errorMsg.value = ""; // 清空错误信息
-            if (response.status === 200) {
-                successMsg.value = "注册成功！即将跳转到登录页面..."; // 显示成功消息
-                setTimeout(() => {
-                    router.push('/login'); // 跳转到 login 路由
-                }, 1000);
-            }
-            else {
-                errorMsg.value = response.data.error || '注册失败';
-            }
-        })
-        .catch(error => {
-            if (error.response && error.response.status != 200) {
-                errorMsg.value = error.response.data.error || '注册失败';
-            } else {
-                errorMsg.value = "啊?"
-            }
-            successMsg.value = ""; // 清空成功消息
-        });
+    if (!alreadysend) {
+        apiClient.post('signup', data2post)
+            .then(response => {
+                errorMsg.value = ""; // 清空错误信息
+                if (response.data.status === 114514) {
+                    successMsg.value = "注册成功！即将跳转到登录页面..."; // 显示成功消息
+                    alreadysend = true; // 新增成功消息状态
+                    setTimeout(() => {
+
+                        router.push('/login'); // 跳转到 login 路由
+                    }, 800);
+                }
+                else {
+                    errorMsg.value = "登录失败,状态码" + response.data.status;
+                    successMsg.value = "";
+                } // TODO: 显示状态码提示信息
+            })
+            .catch(error => {
+                if (error.response && error.response.status != 200) {
+                    errorMsg.value = error.response.data.error || '注册失败';
+                } else {
+                    errorMsg.value = "啊?"
+                }
+                successMsg.value = ""; // 清空成功消息
+            });
+
+    } else {
+        successMsg.value = "已经注册成功了哦!"; // 显示错误信息
+    }
 };
 </script>
 
