@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import apiClient from '../scripts/client.js';
+import codes2msg from '../scripts/codes2msg';
+
 
 const errorMsg = ref("");
 const successMsg = ref(""); // 新增成功消息状态
@@ -64,17 +66,13 @@ const submit = () => {
                     }, 800);
                 }
                 else {
-                    errorMsg.value = "登录失败,状态码" + response.data.status;
+                    errorMsg.value = `注册失败: ${codes2msg(response.data.status)}`;
                     successMsg.value = "";
-                } // TODO: 显示状态码提示信息
+                }
             })
             .catch(error => {
-                if (error.response && error.response.status != 200) {
-                    errorMsg.value = error.response.data.error || '注册失败';
-                } else {
-                    errorMsg.value = "啊?"
-                }
-                successMsg.value = ""; // 清空成功消息
+                errorMsg.value = `注册失败: ${codes2msg(error.response.data.status)}`;
+                successMsg.value = "";
             });
 
     } else {

@@ -16,7 +16,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import logined from "../scripts/main.js";
-import apiClient from "../scripts/client.js"
+import authClient from "../scripts/client.js"
 
 let islogin = ref(false);
 
@@ -24,13 +24,6 @@ onMounted(() => {
   islogin.value = logined();
   if (islogin.value) {
     console.log("用户已登录");
-    apiClient.get("/space/")
-      .then((response) => {
-        console.log("用户信息: ", response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
   } else {
     console.log("用户未登录");
   }

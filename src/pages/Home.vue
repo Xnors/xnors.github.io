@@ -15,6 +15,6 @@ usePageEffects();
   <FirstPage />
   <Services />
   <Team />
-  <Contact />
+  <!-- <Contact /> -->
   <XFooter />
 </template>

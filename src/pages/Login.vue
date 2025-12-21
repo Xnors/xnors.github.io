@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import apiClient from '../scripts/client';
+import codes2msg from '../scripts/codes2msg';
 
 const errorMsg = ref("");
 const successMsg = ref("");
@@ -26,19 +27,17 @@ const submit = () => {
             if (response.data.status == 114514) {
                 errorMsg.value = "";
                 successMsg.value = "登录成功！即将跳转到主页...";
-
-
                 // 延迟跳转，让用户看到成功消息
                 setTimeout(() => {
                     router.push('/home');
                 }, 1000);
             } else {
-                errorMsg.value = "登录失败,状态码" + response.data.status;
+                errorMsg.value = `登录失败: ${codes2msg(response.data.status)}`;
                 successMsg.value = "";
-            } // TODO: 显示状态码提示信息
+            }
         })
         .catch(error => {
-            errorMsg.value = error.response?.data?.error || error.message || '登录失败';
+            errorMsg.value = `登录失败: ${codes2msg(error.response.data.status)}`; 
             successMsg.value = "";
         });
 };
