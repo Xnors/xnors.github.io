@@ -14,7 +14,4 @@ function codes2msg(code) {
     return codes2msgmap[code] || `未知错误:${code}`;
 }
 
-
-
-
 export default codes2msg;
