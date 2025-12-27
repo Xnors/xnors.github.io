@@ -16,12 +16,13 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import logined from "../scripts/main.js";
-import authClient from "../scripts/client.js"
+// import authClient from "../scripts/client.js"
 
 let islogin = ref(false);
 
-onMounted(() => {
-  islogin.value = logined();
+onMounted(async () => {
+  islogin.value = await logined();
+
   if (islogin.value) {
     console.log("用户已登录");
   } else {

@@ -8,4 +8,12 @@ export default defineConfig({
     vue(),
   ],
   base: '/',
+  server: {
+    proxy: {
+      '/auth': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      }
+    }
+  }
 })
